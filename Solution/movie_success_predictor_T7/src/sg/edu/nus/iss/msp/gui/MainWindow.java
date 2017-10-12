@@ -3,86 +3,89 @@ package sg.edu.nus.iss.msp.gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.swing.*;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
+import sg.edu.nus.iss.msp.core.MovieService;
+import sg.edu.nus.iss.msp.model.Movie;
 
+public class MainWindow extends JFrame {
 
-/**
- * 
- * @author CH
- *
- */
-public class MainWindow extends JFrame
-{
-	public MainWindow() {
+	private MovieService movieService;
+	private Movie[] movies;
+
+	public MainWindow(MovieService movieService) {
+		this.movieService = movieService;
+		initialize();
+
+	}
+
+	private void initialize() {
 		this.setTitle("Movie Success Predictor T7");
 		this.getContentPane().setLayout(null);
-		
+
 		this.setResizable(false);
 		this.setBounds(100, 100, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
 		this.setSize(800, 600);
-		
+
 		JPanel WelcomePanel = new JPanel();
 		WelcomePanel.setBounds(5, 20, 780, 50);
 		this.getContentPane().add(WelcomePanel);
 		WelcomePanel.setLayout(null);
-		
+
 		JLabel Lbl_Welcome = new JLabel("Welcome !");
 		Lbl_Welcome.setBounds(331, 11, 71, 17);
 		Lbl_Welcome.setFont(new Font("Tahoma", Font.BOLD, 14));
 		WelcomePanel.add(Lbl_Welcome);
-		
+
 		JPanel OptionPanel = new JPanel();
 		OptionPanel.setBounds(5, 110, 780, 250);
 		this.getContentPane().add(OptionPanel);
 		OptionPanel.setLayout(null);
-		
-		JButton Btn_CheckData = new JButton("Check Data");
-		Btn_CheckData.addActionListener(new ActionListener() {
+
+		JButton Btn_ManageMovieData = new JButton("Manage Movie Data");
+		Btn_ManageMovieData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//TODO
+				ManageMovieData();
 			}
 		});
-		Btn_CheckData.setBounds(93, 67, 250, 100);
-		OptionPanel.add(Btn_CheckData);
-		
-		JButton Btn_PredictMovie = new JButton("Predict Movie");
-		Btn_PredictMovie.addActionListener(new ActionListener() {
+		Btn_ManageMovieData.setBounds(72, 48, 250, 150);
+		OptionPanel.add(Btn_ManageMovieData);
+
+		JButton Btn_PredictNewMovie = new JButton("Predict New Movie");
+		Btn_PredictNewMovie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				PredictNewMovie();
 			}
 		});
-		Btn_PredictMovie.setBounds(386, 67, 250, 100);
-		OptionPanel.add(Btn_PredictMovie);
-		
+		Btn_PredictNewMovie.setBounds(409, 48, 250, 150);
+		OptionPanel.add(Btn_PredictNewMovie);
+
 		JPanel FooterPanel = new JPanel();
 		FooterPanel.setBounds(5, 409, 780, 60);
 		this.getContentPane().add(FooterPanel);
 		FooterPanel.setLayout(null);
-		
+
 		JButton Btn_Close = new JButton("Close");
 		Btn_Close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				dispose();
 			}
 		});
 		Btn_Close.setBounds(313, 11, 110, 36);
 		FooterPanel.add(Btn_Close);
-		
-		
-		
-		
+
 	}
 
-	
-	
-	
-	
+	private void ManageMovieData() {
+		// TODO
+
+	}
+
+	private void PredictNewMovie() {
+		// TODO
+		PredictMovieWindow predictMovieWindow = new PredictMovieWindow(movieService);
+		predictMovieWindow.setVisible(true);
+	}
+
 }

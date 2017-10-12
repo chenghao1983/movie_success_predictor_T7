@@ -1,27 +1,17 @@
 package sg.edu.nus.iss.msp.core;
 
 import java.io.*;
-import java.lang.reflect.Field;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
 import weka.core.Instances;
 
-import sg.edu.nus.iss.msp.constants.Constants;
+import sg.edu.nus.iss.msp.constant.Constants;
+import sg.edu.nus.iss.msp.model.Movie;
 
-/**
- * 
- * @author CH
- */
-public class Predictor {
-	
-	Instances data = null;
-	
-	public void LoadFile() {
+public class MovieService {
+
+	private Instances instances = null;
+	private Movie[] movies = null;
+
+	public void loadData() {
 		BufferedReader reader = null;
 		try {
 			reader = new BufferedReader(new FileReader(getInputDataFilePath()));
@@ -29,9 +19,9 @@ public class Predictor {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		
+
 		try {
-			data = new Instances(reader);
+			instances = new Instances(reader);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -43,12 +33,15 @@ public class Predictor {
 			e.printStackTrace();
 		}
 		// setting class attribute
-		data.setClassIndex(data.numAttributes() - 1);
+		instances.setClassIndex(instances.numAttributes() - 1);
+		
 	}
-	
 
-	
-	
+	public void saveData(Movie[] movies) {
+		// TODO
+
+	}
+
 	public String getInputDataFilePath() throws IOException {
 		String currentDirectory = null;
 		currentDirectory = System.getProperty("user.dir");
@@ -62,4 +55,31 @@ public class Predictor {
 		return currentDirectory + "/data/" + Constants.DATA_FILE_NAME;
 	}
 
+	public Movie[] getMovies() {
+		if (movies == null) {
+			loadData();
+			convertData();
+		}
+		return movies;
+	}
+
+	public void setMovies(Movie[] movies) {
+		this.movies = movies;
+	}
+
+	private Instances getInstances() {
+		if (instances == null) {
+			loadData();
+			convertData();
+		}
+		return instances;
+	}
+
+	private void setInstances(Instances instances) {
+		this.instances = instances;
+	}
+
+	private void convertData() {
+		// TODO
+	}
 }

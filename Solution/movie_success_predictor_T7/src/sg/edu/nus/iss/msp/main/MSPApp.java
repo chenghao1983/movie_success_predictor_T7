@@ -1,18 +1,14 @@
 package sg.edu.nus.iss.msp.main;
 
+import sg.edu.nus.iss.msp.core.MovieService;
 import sg.edu.nus.iss.msp.gui.MainWindow;
 
-
-/**
- * 
- * @author CH
- *
- */
 public class MSPApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		MainWindow Main = new MainWindow();	
+
+		MovieService movieService = new MovieService();
+		MainWindow Main = new MainWindow(movieService);
 		Main.setVisible(true);
 	}
 }

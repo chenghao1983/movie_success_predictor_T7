@@ -1,0 +1,15 @@
+@relation data
+
+@attribute MainActorPopularity REAL
+@attribute SecondActorPopularity REAL
+@attribute DirectorPopularity REAL
+@attribute Genre string
+@attribute IMDBScore REAL
+@attribute ContryOfOrigin string
+@attribute GrossProfit REAL
+@attribute Budget REAL
+
+@data
+10000,20000,50000,"Science Fiction",88.4,"USA",260000000,890000000
+20000,20000,10000,"Adventure",45.2,"UK",380000000,5000000
+800000,500000,440000,"Fantasy",67.0,"USA",180000000,670000000
