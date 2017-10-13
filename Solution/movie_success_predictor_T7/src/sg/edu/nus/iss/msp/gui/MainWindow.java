@@ -12,6 +12,9 @@ public class MainWindow extends JFrame {
 	private MovieService movieService;
 	private Movie[] movies;
 
+	private ManageMovieDataWindow manageMovieDataWindow;
+	private PredictMovieInputWindow predictMovieInputWindow;
+
 	public MainWindow(MovieService movieService) {
 		this.movieService = movieService;
 		initialize();
@@ -26,7 +29,7 @@ public class MainWindow extends JFrame {
 		this.setBounds(100, 100, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
-		this.setSize(800, 600);
+		this.setSize(800, 526);
 
 		JPanel WelcomePanel = new JPanel();
 		WelcomePanel.setBounds(5, 20, 780, 50);
@@ -43,7 +46,7 @@ public class MainWindow extends JFrame {
 		this.getContentPane().add(OptionPanel);
 		OptionPanel.setLayout(null);
 
-		JButton Btn_ManageMovieData = new JButton("Manage Movie Data");
+		JButton Btn_ManageMovieData = new JButton("View Movie Data");
 		Btn_ManageMovieData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ManageMovieData();
@@ -72,20 +75,41 @@ public class MainWindow extends JFrame {
 				dispose();
 			}
 		});
-		Btn_Close.setBounds(313, 11, 110, 36);
+		Btn_Close.setBounds(246, 6, 250, 50);
 		FooterPanel.add(Btn_Close);
 
 	}
 
 	private void ManageMovieData() {
-		// TODO
-
+		if (manageMovieDataWindow == null) {
+			manageMovieDataWindow = new ManageMovieDataWindow(this, movieService);
+			manageMovieDataWindow.setVisible(true);
+			manageMovieDataWindow.setLocation(getLocation());
+		}
 	}
 
 	private void PredictNewMovie() {
-		// TODO
-		PredictMovieWindow predictMovieWindow = new PredictMovieWindow(movieService);
-		predictMovieWindow.setVisible(true);
+		if (predictMovieInputWindow == null) {
+			predictMovieInputWindow = new PredictMovieInputWindow(this, movieService);
+			predictMovieInputWindow.setVisible(true);
+			predictMovieInputWindow.setLocation(getLocation());
+		}
+	}
+
+	public ManageMovieDataWindow getManageMovieDataWindow() {
+		return manageMovieDataWindow;
+	}
+
+	public void setManageMovieDataWindow(ManageMovieDataWindow manageMovieDataWindow) {
+		this.manageMovieDataWindow = manageMovieDataWindow;
+	}
+
+	public PredictMovieInputWindow getPredictMovieInputWindow() {
+		return predictMovieInputWindow;
+	}
+
+	public void setPredictMovieInputWindow(PredictMovieInputWindow predictMovieInputWindow) {
+		this.predictMovieInputWindow = predictMovieInputWindow;
 	}
 
 }

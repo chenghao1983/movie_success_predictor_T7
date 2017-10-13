@@ -2,44 +2,50 @@ package sg.edu.nus.iss.msp.model;
 
 public class Movie {
 
-	private float mainActorPopularity;
+	private String mainActorName;
+	
+	private double mainActorPopularity;
+	
+	private String secondActorName;
 
-	private float secondActorPopularity;
+	private double secondActorPopularity;
+	
+	private String directorName;
 
-	private float directorPopularity;
+	private double directorPopularity;
 
 	private String genre;
 
-	private float IMDBScore;
+	private double IMDBScore;
 
-	private String contryOfOrigin;
+	private String countryOfOrigin;
 
 	private Double grossProfit;
 
 	private Double budget;
 	
 
-	public float getMainActorPopularity() {
+	public double getMainActorPopularity() {
 		return mainActorPopularity;
 	}
 
-	public void setMainActorPopularity(float mainActorPopularity) {
+	public void setMainActorPopularity(double mainActorPopularity) {
 		this.mainActorPopularity = mainActorPopularity;
 	}
 
-	public float getSecondActorPopularity() {
+	public double getSecondActorPopularity() {
 		return secondActorPopularity;
 	}
 
-	public void setSecondActorPopularity(float secondActorPopularity) {
+	public void setSecondActorPopularity(double secondActorPopularity) {
 		this.secondActorPopularity = secondActorPopularity;
 	}
 
-	public float getDirectorPopularity() {
+	public double getDirectorPopularity() {
 		return directorPopularity;
 	}
 
-	public void setDirectorPopularity(float directorPopularity) {
+	public void setDirectorPopularity(double directorPopularity) {
 		this.directorPopularity = directorPopularity;
 	}
 
@@ -51,20 +57,20 @@ public class Movie {
 		this.genre = genre;
 	}
 
-	public float getIMDBScore() {
+	public double getIMDBScore() {
 		return IMDBScore;
 	}
 
-	public void setIMDBScore(float iMDBScore) {
+	public void setIMDBScore(double iMDBScore) {
 		IMDBScore = iMDBScore;
 	}
 
-	public String getContryOfOrigin() {
-		return contryOfOrigin;
+	public String getCountryOfOrigin() {
+		return countryOfOrigin;
 	}
 
-	public void setContryOfOrigin(String contryOfOrigin) {
-		this.contryOfOrigin = contryOfOrigin;
+	public void setCountryOfOrigin(String countryOfOrigin) {
+		this.countryOfOrigin = countryOfOrigin;
 	}
 
 	public Double getGrossProfit() {
@@ -85,6 +91,30 @@ public class Movie {
 
 	public Boolean getIsSuccess() {
 		return (getGrossProfit() / getBudget() > 1.65);
+	}
+
+	public String getMainActorName() {
+		return mainActorName;
+	}
+
+	public void setMainActorName(String mainActorName) {
+		this.mainActorName = mainActorName;
+	}
+
+	public String getSecondActorName() {
+		return secondActorName;
+	}
+
+	public void setSecondActorName(String secondActorName) {
+		this.secondActorName = secondActorName;
+	}
+
+	public String getDirectorName() {
+		return directorName;
+	}
+
+	public void setDirectorName(String directorName) {
+		this.directorName = directorName;
 	}
 
 }

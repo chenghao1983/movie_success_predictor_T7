@@ -1,6 +1,10 @@
 package sg.edu.nus.iss.msp.core;
 
 import java.io.*;
+import java.util.Iterator;
+
+import weka.core.Attribute;
+import weka.core.Instance;
 import weka.core.Instances;
 
 import sg.edu.nus.iss.msp.constant.Constants;
@@ -37,6 +41,8 @@ public class MovieService {
 		
 	}
 
+	
+	
 	public void saveData(Movie[] movies) {
 		// TODO
 
@@ -80,6 +86,24 @@ public class MovieService {
 	}
 
 	private void convertData() {
-		// TODO
+		
+		movies = new Movie[instances.size()];
+		for (int i = 0; i < movies.length; i++) {
+			Movie movie = new Movie();
+			Instance instance = instances.get(i);
+			movie.setMainActorName(instance.stringValue(0));
+			movie.setMainActorPopularity(instance.value(1));
+			movie.setSecondActorName(instance.stringValue(2));
+			movie.setSecondActorPopularity(instance.value(3));
+			movie.setDirectorName(instance.stringValue(4));
+			movie.setDirectorPopularity(instance.value(5));
+			movie.setGenre(instance.stringValue(6));
+			movie.setIMDBScore(instance.value(7));
+			movie.setCountryOfOrigin(instance.stringValue(8));
+			movie.setGrossProfit(instance.value(9));
+			movie.setBudget(instance.value(10));
+									
+			movies[i]=movie;
+		}
 	}
 }

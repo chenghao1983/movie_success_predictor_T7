@@ -3,58 +3,49 @@ package sg.edu.nus.iss.msp.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import sg.edu.nus.iss.msp.core.MovieService;
 import sg.edu.nus.iss.msp.model.Movie;
 
 public class ManageMovieDataWindow extends JFrame {
-	private JScrollPane scrollPane;
-	private JPanel buttonPanel;
-	private JTable table;
-	private JButton btnImportMovie;
-	private JButton btnClose;
-	private DefaultTableModel model;
 
+	private MainWindow mainWindow;
 	private MovieService movieService;
+
 	private Movie[] movies;
 
-	private String[] columns = new String[] { "Main Actor popularity", "Secondary Actor popularity",
-			"Director popularity", "Genre", "IMDB score", "Country of Origin ", "Gross Profit", "Budget", "Success"};
+	private String[] columns = new String[] { "Main Actor Name", "Main Actor Popularity", "Secondary Actor Name",
+			"Secondary Actor Popularity", "Director Name", "Director Popularity", "Genre", "IMDB score",
+			"Country of Origin ", "Gross Profit", "Budget", "Success" };
 
-	public ManageMovieDataWindow(MovieService movieService) {
+	public ManageMovieDataWindow(MainWindow mainWindow, MovieService movieService) {
 		this.movieService = movieService;
+		this.mainWindow = mainWindow;
 		this.movies = movieService.getMovies();
 		initialize();
 	}
 
 	private void initialize() {
-		setSize(821, 600);
+		setSize(1000, 600);
 		setTitle("Movie List");
 
 		getContentPane().setLayout(null);
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 11, 782, 459);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 960, 450);
 		getContentPane().add(scrollPane);
-		buttonPanel = new JPanel();
-		buttonPanel.setBounds(12, 481, 782, 66);
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBounds(12, 481, 960, 66);
 		getContentPane().add(buttonPanel);
 		buttonPanel.setOpaque(false);
-
-		btnImportMovie = new JButton("Import Movie");
-		btnImportMovie.setBounds(185, 5, 160, 55);
-		btnImportMovie.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				importMovieData();
-			}
-		});
 		buttonPanel.setLayout(null);
-		buttonPanel.add(btnImportMovie);
 
-		btnClose = new JButton("Close");
-		btnClose.setBounds(424, 5, 160, 55);
+		JButton btnClose = new JButton("Close");
+		btnClose.setBounds(400, 5, 160, 55);
 		btnClose.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				mainWindow.setManageMovieDataWindow(null);
 				dispose();
 			}
 
@@ -63,22 +54,36 @@ public class ManageMovieDataWindow extends JFrame {
 
 		// jTable Data Display
 		Object[][] data = new Object[movies.length][];
-		model = new DefaultTableModel(data, columns) {
+
+		for (int i = 0; i < movies.length; i++) {
+			String[] values = new String[columns.length];
+			values[0] = movies[i].getMainActorName();
+			values[1] = Double.toString(movies[i].getMainActorPopularity());
+			values[2] = movies[i].getSecondActorName();
+			values[3] = Double.toString(movies[i].getSecondActorPopularity());
+			values[4] = movies[i].getDirectorName();
+			values[5] = Double.toString(movies[i].getDirectorPopularity());
+			values[6] = movies[i].getGenre();
+			values[7] = Double.toString(movies[i].getIMDBScore());
+			values[8] = movies[i].getCountryOfOrigin();
+			values[9] = Double.toString(movies[i].getGrossProfit());
+			values[10] = Double.toString(movies[i].getBudget());
+			values[11] = Boolean.toString(movies[i].getIsSuccess());
+					
+			data[i] = values;
+		}
+
+		DefaultTableModel model = new DefaultTableModel(data, columns) {
 
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
 		model.isCellEditable(0, 0);
-		table = new JTable(model);
+		JTable table = new JTable(model);
 		table.setFillsViewportHeight(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(table);
-
-	}
-
-	private void importMovieData() {
-		// TODO
 
 	}
 

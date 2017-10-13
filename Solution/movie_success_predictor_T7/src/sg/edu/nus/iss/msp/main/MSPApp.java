@@ -10,5 +10,6 @@ public class MSPApp {
 		MovieService movieService = new MovieService();
 		MainWindow Main = new MainWindow(movieService);
 		Main.setVisible(true);
+		Main.setLocation(800, 200);
 	}
 }
