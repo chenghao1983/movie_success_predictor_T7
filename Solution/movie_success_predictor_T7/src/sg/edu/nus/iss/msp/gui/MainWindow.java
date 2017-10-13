@@ -75,7 +75,7 @@ public class MainWindow extends JFrame {
 				dispose();
 			}
 		});
-		Btn_Close.setBounds(246, 6, 250, 50);
+		Btn_Close.setBounds(246, 3, 250, 55);
 		FooterPanel.add(Btn_Close);
 
 	}
