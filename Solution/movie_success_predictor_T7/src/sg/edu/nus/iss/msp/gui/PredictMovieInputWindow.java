@@ -158,6 +158,10 @@ public class PredictMovieInputWindow extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				mainWindow.setPredictMovieInputWindow(null);
+				if(predictMovieResultWindow !=null)
+				{
+					predictMovieResultWindow.dispose();
+				}
 				dispose();
 			}
 

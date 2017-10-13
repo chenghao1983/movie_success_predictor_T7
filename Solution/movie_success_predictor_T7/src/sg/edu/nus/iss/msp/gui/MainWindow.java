@@ -73,6 +73,18 @@ public class MainWindow extends JFrame {
 		Btn_Close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				if(manageMovieDataWindow!=null)
+				{
+					manageMovieDataWindow.dispose();
+				}
+				if(predictMovieInputWindow !=null)
+				{
+					if(predictMovieInputWindow.getPredictMovieResultWindow()!=null)
+					{
+						predictMovieInputWindow.getPredictMovieResultWindow().dispose();
+					}
+					predictMovieInputWindow.dispose();
+				}
 			}
 		});
 		Btn_Close.setBounds(246, 3, 250, 55);
