@@ -187,7 +187,8 @@ public class PredictMovieInputWindow extends JFrame {
 		{
 			if(getPredictMovieResultWindow() ==null)
 			{
-			//MovieService.predict();
+				//TODO
+				//MovieService.predict();
 				predictMovieResultWindow = new PredictMovieResultWindow(this, movieService);
 				predictMovieResultWindow.setVisible(true);
 				predictMovieResultWindow.setLocation(getLocation());
@@ -197,7 +198,7 @@ public class PredictMovieInputWindow extends JFrame {
 	private Boolean validateForm()
 	{
 		Boolean validated = true;
-		
+		//TODO
 		return validated;
 	}
 
