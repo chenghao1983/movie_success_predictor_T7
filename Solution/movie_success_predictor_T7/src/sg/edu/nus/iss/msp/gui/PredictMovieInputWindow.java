@@ -49,7 +49,7 @@ public class PredictMovieInputWindow extends JFrame {
 		intpuPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Main Actor Name");
-		lblNewLabel.setBounds(191, 27, 81, 14);
+		lblNewLabel.setBounds(191, 27, 126, 14);
 		intpuPane.add(lblNewLabel);
 		
 		Txt_MainActorName = new JTextField();
