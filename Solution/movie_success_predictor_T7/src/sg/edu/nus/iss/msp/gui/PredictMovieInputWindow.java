@@ -8,26 +8,38 @@ import javax.swing.table.DefaultTableModel;
 
 import sg.edu.nus.iss.msp.core.MovieService;
 import sg.edu.nus.iss.msp.model.Movie;
+import java.awt.Color;
 
 public class PredictMovieInputWindow extends JFrame {
-	
+
 	private MainWindow mainWindow;
 	private PredictMovieResultWindow predictMovieResultWindow;
 	private MovieService movieService;
 	private Movie[] movies;
 	private JButton btnPredict;
-	private JTextField Txt_MainActorName;
+	private JTextField txt_MainActorName;
 	private JTextField txt_MainActorPopularity;
-	private JTextField txt_secondActorName;
+	private JTextField txt_SecondActorName;
 	private JTextField txt_SecondActorPopularity;
 	private JTextField txt_DirectorName;
 	private JTextField txt_DirectorPopularity;
 	private JTextField txt_Genre;
 	private JTextField txt_CountryOfOrigin;
 	private JTextField txt_Budget;
+	private JLabel lblMsg;
+
+	private String mainActorName;
+	private Double mainActorPopularity;
+	private String secondActorName;
+	private Double secondActorPopularity;
+	private String directorName;
+	private Double directorPopularity;
+	private String genre;
+	private String countryOfOrigin;
+	private Double budget;
 
 	public PredictMovieInputWindow(MainWindow mainWindow, MovieService movieService) {
-		
+
 		this.mainWindow = mainWindow;
 		this.movieService = movieService;
 		this.movies = movieService.getMovies();
@@ -39,93 +51,98 @@ public class PredictMovieInputWindow extends JFrame {
 	private void initialize() {
 		setSize(800, 569);
 		setTitle("Predict New Movie");
-		
+
 		getContentPane().setLayout(null);
 		JPanel intpuPane = new JPanel();
 		intpuPane.setBounds(10, 11, 760, 409);
 		getContentPane().add(intpuPane);
 		intpuPane.setLayout(null);
-		
+
 		JLabel lblNewLabel = new JLabel("Main Actor Name");
-		lblNewLabel.setBounds(191, 27, 126, 14);
+		lblNewLabel.setBounds(184, 21, 137, 14);
 		intpuPane.add(lblNewLabel);
-		
-		Txt_MainActorName = new JTextField();
-		Txt_MainActorName.setBounds(331, 24, 248, 20);
-		intpuPane.add(Txt_MainActorName);
-		Txt_MainActorName.setColumns(10);
-		
+
+		txt_MainActorName = new JTextField();
+		txt_MainActorName.setBounds(331, 18, 248, 20);
+		intpuPane.add(txt_MainActorName);
+		txt_MainActorName.setColumns(10);
+
 		JLabel lblMainActorPopularity = new JLabel("Main Actor Popularity");
-		lblMainActorPopularity.setBounds(191, 62, 126, 14);
+		lblMainActorPopularity.setBounds(184, 56, 137, 14);
 		intpuPane.add(lblMainActorPopularity);
-		
+
 		txt_MainActorPopularity = new JTextField();
 		txt_MainActorPopularity.setColumns(10);
-		txt_MainActorPopularity.setBounds(331, 59, 248, 20);
+		txt_MainActorPopularity.setBounds(331, 53, 248, 20);
 		intpuPane.add(txt_MainActorPopularity);
-		
+
 		JLabel lblSecondActorName = new JLabel("Second Actor Name");
-		lblSecondActorName.setBounds(191, 98, 126, 14);
+		lblSecondActorName.setBounds(184, 92, 137, 14);
 		intpuPane.add(lblSecondActorName);
-		
-		txt_secondActorName = new JTextField();
-		txt_secondActorName.setColumns(10);
-		txt_secondActorName.setBounds(331, 95, 248, 20);
-		intpuPane.add(txt_secondActorName);
-		
+
+		txt_SecondActorName = new JTextField();
+		txt_SecondActorName.setColumns(10);
+		txt_SecondActorName.setBounds(331, 89, 248, 20);
+		intpuPane.add(txt_SecondActorName);
+
 		JLabel lblSecondActorPopularity = new JLabel("Second Actor Popularity");
-		lblSecondActorPopularity.setBounds(191, 135, 126, 14);
+		lblSecondActorPopularity.setBounds(184, 129, 137, 14);
 		intpuPane.add(lblSecondActorPopularity);
-		
+
 		txt_SecondActorPopularity = new JTextField();
 		txt_SecondActorPopularity.setColumns(10);
-		txt_SecondActorPopularity.setBounds(331, 132, 248, 20);
+		txt_SecondActorPopularity.setBounds(331, 126, 248, 20);
 		intpuPane.add(txt_SecondActorPopularity);
-		
+
 		JLabel lblDirectorName = new JLabel("Director Name");
-		lblDirectorName.setBounds(191, 176, 126, 14);
+		lblDirectorName.setBounds(184, 170, 137, 14);
 		intpuPane.add(lblDirectorName);
-		
+
 		txt_DirectorName = new JTextField();
 		txt_DirectorName.setColumns(10);
-		txt_DirectorName.setBounds(331, 173, 248, 20);
+		txt_DirectorName.setBounds(331, 167, 248, 20);
 		intpuPane.add(txt_DirectorName);
-		
+
 		JLabel lblDirectorPopularity = new JLabel("Director Popularity");
-		lblDirectorPopularity.setBounds(191, 213, 126, 14);
+		lblDirectorPopularity.setBounds(184, 207, 137, 14);
 		intpuPane.add(lblDirectorPopularity);
-		
+
 		txt_DirectorPopularity = new JTextField();
 		txt_DirectorPopularity.setColumns(10);
-		txt_DirectorPopularity.setBounds(331, 210, 248, 20);
+		txt_DirectorPopularity.setBounds(331, 204, 248, 20);
 		intpuPane.add(txt_DirectorPopularity);
-		
+
 		JLabel lblGenre = new JLabel("Genre");
-		lblGenre.setBounds(191, 253, 126, 14);
+		lblGenre.setBounds(184, 247, 137, 14);
 		intpuPane.add(lblGenre);
-		
+
 		txt_Genre = new JTextField();
 		txt_Genre.setColumns(10);
-		txt_Genre.setBounds(331, 250, 248, 20);
+		txt_Genre.setBounds(331, 244, 248, 20);
 		intpuPane.add(txt_Genre);
-		
+
 		JLabel lblCountryOfOrigin = new JLabel("Country Of Origin");
-		lblCountryOfOrigin.setBounds(191, 293, 126, 14);
+		lblCountryOfOrigin.setBounds(184, 287, 137, 14);
 		intpuPane.add(lblCountryOfOrigin);
-		
+
 		txt_CountryOfOrigin = new JTextField();
 		txt_CountryOfOrigin.setColumns(10);
-		txt_CountryOfOrigin.setBounds(331, 290, 248, 20);
+		txt_CountryOfOrigin.setBounds(331, 284, 248, 20);
 		intpuPane.add(txt_CountryOfOrigin);
-		
+
 		JLabel lblBudget = new JLabel("Budget");
-		lblBudget.setBounds(191, 334, 126, 14);
+		lblBudget.setBounds(184, 328, 137, 14);
 		intpuPane.add(lblBudget);
-		
+
 		txt_Budget = new JTextField();
 		txt_Budget.setColumns(10);
-		txt_Budget.setBounds(331, 331, 248, 20);
+		txt_Budget.setBounds(331, 325, 248, 20);
 		intpuPane.add(txt_Budget);
+
+		lblMsg = new JLabel("");
+		lblMsg.setForeground(Color.RED);
+		lblMsg.setBounds(191, 371, 388, 14);
+		intpuPane.add(lblMsg);
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(10, 431, 760, 86);
 		getContentPane().add(buttonPanel);
@@ -138,8 +155,7 @@ public class PredictMovieInputWindow extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				mainWindow.setPredictMovieInputWindow(null);
-				if(predictMovieResultWindow !=null)
-				{
+				if (predictMovieResultWindow != null) {
 					predictMovieResultWindow.dispose();
 				}
 				dispose();
@@ -147,22 +163,22 @@ public class PredictMovieInputWindow extends JFrame {
 
 		});
 		buttonPanel.add(btnClose);
-		
+
 		btnPredict = new JButton("Predict");
 		btnPredict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
+				// TODO
 				predict();
 			}
 		});
 		btnPredict.setBounds(149, 11, 160, 55);
 		buttonPanel.add(btnPredict);
 
-
 	}
 
 	private void predict() {
 		// TODO Auto-generated method stub
+		lblMsg.setText("");
 		if(validateForm())
 		{
 			if(getPredictMovieResultWindow() ==null)
@@ -174,12 +190,55 @@ public class PredictMovieInputWindow extends JFrame {
 				predictMovieResultWindow.setLocation(getLocation());
 			}
 		}
+		else
+		{
+			lblMsg.setText("Invalid input");
+		}
 	}
-	private Boolean validateForm()
-	{
-		Boolean validated = true;
-		//TODO
-		return validated;
+
+	private Boolean validateForm() {
+		mainActorName = txt_MainActorName.getText();
+		if (mainActorName == null || mainActorName.trim().isEmpty()) {
+			return false;
+		}
+		try {
+			mainActorPopularity = Double.parseDouble(txt_MainActorPopularity.getText());
+		} catch (Exception ex) {
+			return false;
+		}
+		secondActorName = txt_SecondActorName.getText();
+		if (secondActorName == null || secondActorName.trim().isEmpty()) {
+			return false;
+		}
+		try {
+			secondActorPopularity = Double.parseDouble(txt_SecondActorPopularity.getText());
+		} catch (Exception ex) {
+			return false;
+		}
+		directorName = txt_DirectorName.getText();
+		if (directorName == null || directorName.trim().isEmpty()) {
+			return false;
+		}
+		try {
+			directorPopularity = Double.parseDouble(txt_DirectorPopularity.getText());
+		} catch (Exception ex) {
+			return false;
+		}
+		genre = txt_Genre.getText();
+		if (genre == null || genre.trim().isEmpty()) {
+			return false;
+		}
+		countryOfOrigin = txt_CountryOfOrigin.getText();
+		if (countryOfOrigin == null || countryOfOrigin.trim().isEmpty()) {
+			return false;
+		}
+		try {
+			budget = Double.parseDouble(txt_Budget.getText());
+		} catch (Exception ex) {
+			return false;
+		}
+
+		return true;
 	}
 
 	public PredictMovieResultWindow getPredictMovieResultWindow() {
@@ -189,5 +248,4 @@ public class PredictMovieInputWindow extends JFrame {
 	public void setPredictMovieResultWindow(PredictMovieResultWindow predictMovieResultWindow) {
 		this.predictMovieResultWindow = predictMovieResultWindow;
 	}
-
 }
