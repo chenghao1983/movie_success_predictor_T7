@@ -10,6 +10,7 @@
 @attribute CountryOfOrigin string
 @attribute GrossProfit REAL
 @attribute Budget REAL
+@attribute Result string
 
 @data
 "CCH Pounder", 1000, "Joel David Moore", 936, "James Cameron", 0, "Action|Adventure|Fantasy|Sci-Fi", "USA", 760505847, 237000000, "Success"
