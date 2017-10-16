@@ -16,13 +16,13 @@ public class Movie {
 
 	private String genre;
 
-	private double IMDBScore;
-
 	private String countryOfOrigin;
 
 	private Double grossProfit;
 
 	private Double budget;
+	
+	private String result;
 	
 
 	public double getMainActorPopularity() {
@@ -55,14 +55,6 @@ public class Movie {
 
 	public void setGenre(String genre) {
 		this.genre = genre;
-	}
-
-	public double getIMDBScore() {
-		return IMDBScore;
-	}
-
-	public void setIMDBScore(double iMDBScore) {
-		IMDBScore = iMDBScore;
 	}
 
 	public String getCountryOfOrigin() {
@@ -115,6 +107,14 @@ public class Movie {
 
 	public void setDirectorName(String directorName) {
 		this.directorName = directorName;
+	}
+
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
 	}
 
 }

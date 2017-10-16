@@ -98,10 +98,10 @@ public class MovieService {
 			movie.setDirectorName(instance.stringValue(4));
 			movie.setDirectorPopularity(instance.value(5));
 			movie.setGenre(instance.stringValue(6));
-			movie.setIMDBScore(instance.value(7));
-			movie.setCountryOfOrigin(instance.stringValue(8));
-			movie.setGrossProfit(instance.value(9));
-			movie.setBudget(instance.value(10));
+			movie.setCountryOfOrigin(instance.stringValue(7));
+			movie.setGrossProfit(instance.value(8));
+			movie.setBudget(instance.value(9));
+			movie.setResult(instance.stringValue(10));
 									
 			movies[i]=movie;
 		}

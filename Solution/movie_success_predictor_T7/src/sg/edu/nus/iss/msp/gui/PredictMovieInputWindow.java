@@ -23,9 +23,7 @@ public class PredictMovieInputWindow extends JFrame {
 	private JTextField txt_DirectorName;
 	private JTextField txt_DirectorPopularity;
 	private JTextField txt_Genre;
-	private JTextField txt_IMDBScore;
 	private JTextField txt_CountryOfOrigin;
-	private JTextField txt_GrossProfit;
 	private JTextField txt_Budget;
 
 	public PredictMovieInputWindow(MainWindow mainWindow, MovieService movieService) {
@@ -39,12 +37,12 @@ public class PredictMovieInputWindow extends JFrame {
 	}
 
 	private void initialize() {
-		setSize(800, 600);
+		setSize(800, 569);
 		setTitle("Predict New Movie");
 		
 		getContentPane().setLayout(null);
 		JPanel intpuPane = new JPanel();
-		intpuPane.setBounds(10, 11, 760, 450);
+		intpuPane.setBounds(10, 11, 760, 409);
 		getContentPane().add(intpuPane);
 		intpuPane.setLayout(null);
 		
@@ -111,49 +109,31 @@ public class PredictMovieInputWindow extends JFrame {
 		txt_Genre.setBounds(331, 250, 248, 20);
 		intpuPane.add(txt_Genre);
 		
-		JLabel lblImdbScore = new JLabel("IMDB Score");
-		lblImdbScore.setBounds(191, 292, 126, 14);
-		intpuPane.add(lblImdbScore);
-		
-		txt_IMDBScore = new JTextField();
-		txt_IMDBScore.setColumns(10);
-		txt_IMDBScore.setBounds(331, 289, 248, 20);
-		intpuPane.add(txt_IMDBScore);
-		
 		JLabel lblCountryOfOrigin = new JLabel("Country Of Origin");
-		lblCountryOfOrigin.setBounds(191, 329, 126, 14);
+		lblCountryOfOrigin.setBounds(191, 293, 126, 14);
 		intpuPane.add(lblCountryOfOrigin);
 		
 		txt_CountryOfOrigin = new JTextField();
 		txt_CountryOfOrigin.setColumns(10);
-		txt_CountryOfOrigin.setBounds(331, 326, 248, 20);
+		txt_CountryOfOrigin.setBounds(331, 290, 248, 20);
 		intpuPane.add(txt_CountryOfOrigin);
 		
-		JLabel lblGrossProfit = new JLabel("Gross Profit");
-		lblGrossProfit.setBounds(191, 364, 126, 14);
-		intpuPane.add(lblGrossProfit);
-		
-		txt_GrossProfit = new JTextField();
-		txt_GrossProfit.setColumns(10);
-		txt_GrossProfit.setBounds(331, 361, 248, 20);
-		intpuPane.add(txt_GrossProfit);
-		
 		JLabel lblBudget = new JLabel("Budget");
-		lblBudget.setBounds(191, 400, 126, 14);
+		lblBudget.setBounds(191, 334, 126, 14);
 		intpuPane.add(lblBudget);
 		
 		txt_Budget = new JTextField();
 		txt_Budget.setColumns(10);
-		txt_Budget.setBounds(331, 397, 248, 20);
+		txt_Budget.setBounds(331, 331, 248, 20);
 		intpuPane.add(txt_Budget);
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setBounds(12, 481, 782, 66);
+		buttonPanel.setBounds(10, 431, 760, 86);
 		getContentPane().add(buttonPanel);
 		buttonPanel.setOpaque(false);
 		buttonPanel.setLayout(null);
 
 		JButton btnClose = new JButton("Close");
-		btnClose.setBounds(450, 5, 160, 55);
+		btnClose.setBounds(449, 11, 160, 55);
 		btnClose.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -175,7 +155,7 @@ public class PredictMovieInputWindow extends JFrame {
 				predict();
 			}
 		});
-		btnPredict.setBounds(150, 5, 160, 55);
+		btnPredict.setBounds(149, 11, 160, 55);
 		buttonPanel.add(btnPredict);
 
 

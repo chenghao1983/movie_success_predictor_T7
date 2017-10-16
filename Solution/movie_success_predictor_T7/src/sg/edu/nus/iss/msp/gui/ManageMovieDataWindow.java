@@ -16,8 +16,8 @@ public class ManageMovieDataWindow extends JFrame {
 	private Movie[] movies;
 
 	private String[] columns = new String[] { "Main Actor Name", "Main Actor Popularity", "Secondary Actor Name",
-			"Secondary Actor Popularity", "Director Name", "Director Popularity", "Genre", "IMDB score",
-			"Country of Origin ", "Gross Profit", "Budget", "Success" };
+			"Secondary Actor Popularity", "Director Name", "Director Popularity", "Genre", 
+			"Country of Origin ", "Gross Profit", "Budget", "Result" };
 
 	public ManageMovieDataWindow(MainWindow mainWindow, MovieService movieService) {
 		this.movieService = movieService;
@@ -58,17 +58,16 @@ public class ManageMovieDataWindow extends JFrame {
 		for (int i = 0; i < movies.length; i++) {
 			String[] values = new String[columns.length];
 			values[0] = movies[i].getMainActorName();
-			values[1] = Double.toString(movies[i].getMainActorPopularity());
+			values[1] = String.format("%1$,.0f", movies[i].getMainActorPopularity());  
 			values[2] = movies[i].getSecondActorName();
-			values[3] = Double.toString(movies[i].getSecondActorPopularity());
+			values[3] = String.format("%1$,.0f", movies[i].getSecondActorPopularity());  
 			values[4] = movies[i].getDirectorName();
-			values[5] = Double.toString(movies[i].getDirectorPopularity());
+			values[5] = String.format("%1$,.0f", movies[i].getDirectorPopularity()); 
 			values[6] = movies[i].getGenre();
-			values[7] = Double.toString(movies[i].getIMDBScore());
-			values[8] = movies[i].getCountryOfOrigin();
-			values[9] = Double.toString(movies[i].getGrossProfit());
-			values[10] = Double.toString(movies[i].getBudget());
-			values[11] = Boolean.toString(movies[i].getIsSuccess());
+			values[7] = movies[i].getCountryOfOrigin();
+			values[8] = String.format("%1$,.0f", movies[i].getGrossProfit()); 
+			values[9] = String.format("%1$,.0f", movies[i].getBudget()); 
+			values[10] = movies[i].getResult();
 					
 			data[i] = values;
 		}
