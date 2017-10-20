@@ -38,11 +38,18 @@ public class MovieService {
 		}
 		// setting class attribute
 		instances.setClassIndex(instances.numAttributes() - 1);
-		
+
 	}
 
-	
-	
+	public boolean predictMovieSuccess(Movie movie)	{
+		// TODO: add ML code here
+		
+		
+		
+		
+		return true;
+	}
+
 	public void saveData(Movie[] movies) {
 		// TODO
 
@@ -86,7 +93,7 @@ public class MovieService {
 	}
 
 	private void convertData() {
-		
+
 		movies = new Movie[instances.size()];
 		for (int i = 0; i < movies.length; i++) {
 			Movie movie = new Movie();
@@ -102,8 +109,8 @@ public class MovieService {
 			movie.setGrossProfit(instance.value(8));
 			movie.setBudget(instance.value(9));
 			movie.setResult(instance.stringValue(10));
-									
-			movies[i]=movie;
+
+			movies[i] = movie;
 		}
 	}
 }

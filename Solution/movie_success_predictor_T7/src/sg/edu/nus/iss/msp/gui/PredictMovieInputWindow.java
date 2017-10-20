@@ -179,19 +179,27 @@ public class PredictMovieInputWindow extends JFrame {
 	private void predict() {
 		// TODO Auto-generated method stub
 		lblMsg.setText("");
-		if(validateForm())
-		{
-			if(getPredictMovieResultWindow() ==null)
-			{
-				//TODO
-				//MovieService.predict();
+		if (validateForm()) {
+			if (getPredictMovieResultWindow() == null) {
+				Movie newMovie = new Movie();
+				newMovie.setMainActorName(mainActorName);
+				newMovie.setMainActorPopularity(mainActorPopularity);
+				newMovie.setSecondActorName(secondActorName);
+				newMovie.setSecondActorPopularity(secondActorPopularity);
+				newMovie.setDirectorName(directorName);
+				newMovie.setDirectorPopularity(directorPopularity);
+				newMovie.setDirectorPopularity(directorPopularity);
+				newMovie.setGenre(genre);
+				newMovie.setCountryOfOrigin(countryOfOrigin);
+				newMovie.setBudget(budget);
+								
+				boolean movieSuccess = movieService.predictMovieSuccess(newMovie);
+				
 				predictMovieResultWindow = new PredictMovieResultWindow(this, movieService);
 				predictMovieResultWindow.setVisible(true);
 				predictMovieResultWindow.setLocation(getLocation());
 			}
-		}
-		else
-		{
+		} else {
 			lblMsg.setText("Invalid input");
 		}
 	}
