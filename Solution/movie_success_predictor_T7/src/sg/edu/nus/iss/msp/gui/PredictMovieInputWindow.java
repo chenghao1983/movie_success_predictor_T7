@@ -68,24 +68,24 @@ public class PredictMovieInputWindow extends JFrame {
 		getContentPane().add(intpuPane);
 		intpuPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Main Actor Name");
-		lblNewLabel.setBounds(184, 21, 137, 14);
+		JLabel lblNewLabel = new JLabel("Main Actor Popularity");
+		lblNewLabel.setBounds(184, 21, 147, 14);
 		intpuPane.add(lblNewLabel);
 
 		comboBox_MainActorName = new JComboBox<ComboItem>();
 		comboBox_MainActorName.setBounds(331, 18, 248, 20);
 		intpuPane.add(comboBox_MainActorName);
 
-		JLabel lblSecondActorName = new JLabel("Second Actor Name");
-		lblSecondActorName.setBounds(184, 72, 137, 14);
+		JLabel lblSecondActorName = new JLabel("Second Actor Popularity");
+		lblSecondActorName.setBounds(184, 72, 147, 14);
 		intpuPane.add(lblSecondActorName);
 
 		comboBox_SecondActorName = new JComboBox<ComboItem>();
 		comboBox_SecondActorName.setBounds(331, 69, 248, 20);
 		intpuPane.add(comboBox_SecondActorName);
 
-		JLabel lblDirectorName = new JLabel("Director Name");
-		lblDirectorName.setBounds(184, 125, 137, 14);
+		JLabel lblDirectorName = new JLabel("Director Popularity");
+		lblDirectorName.setBounds(184, 125, 147, 14);
 		intpuPane.add(lblDirectorName);
 
 		comboBox_DirectorName = new JComboBox<ComboItem>();
@@ -227,8 +227,12 @@ public class PredictMovieInputWindow extends JFrame {
 		Collections.sort(listCountryOfOrigin);
 		
 		comboBox_MainActorName.addItem(new ComboItem("NA", "NA"));
+		comboBox_MainActorName.addItem(new ComboItem("Amateur - Facebook like < 1000", "Amateur"));
+		comboBox_MainActorName.addItem(new ComboItem("Star - Facebook like between 1000 ans 5000", "Star"));
+		comboBox_MainActorName.addItem(new ComboItem("Super Star - Facebook > 5000", "Super Star"));
+		
 		for (String mainActorName : listMainActorName) {
-			comboBox_MainActorName.addItem(new ComboItem(mainActorName, mainActorName));
+			//comboBox_MainActorName.addItem(new ComboItem(mainActorName, mainActorName));
 		}
 
 		comboBox_SecondActorName.addItem(new ComboItem("NA", "NA"));		
