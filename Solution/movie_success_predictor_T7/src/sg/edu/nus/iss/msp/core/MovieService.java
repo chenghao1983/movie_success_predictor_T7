@@ -67,7 +67,20 @@ public class MovieService {
 		}
 		return currentDirectory + "/data/" + Constants.DATA_FILE_NAME;
 	}
-
+	
+	public static String getImageFileLocation() throws IOException {
+		String currentDirectory = null;
+		currentDirectory = System.getProperty("user.dir");
+		if (currentDirectory == null || currentDirectory.equals("")) {
+			File currentDir = new File(".");
+			currentDirectory = currentDir.getAbsolutePath();
+		}
+		if (!currentDirectory.contains(Constants.PROJECT_NAME)) {
+			currentDirectory += "/" + Constants.PROJECT_NAME;
+		}
+		return currentDirectory + "/src/img";
+	}
+	
 	public Movie[] getMovies() {
 		if (movies == null) {
 			loadData();
