@@ -30,20 +30,20 @@ public class MainWindow extends JFrame {
 		this.setBounds(100, 100, 450, 300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.getContentPane().setLayout(null);
-		this.setSize(800, 526);
+		this.setSize(767, 526);
 
 		JPanel WelcomePanel = new JPanel();
-		WelcomePanel.setBounds(5, 20, 780, 50);
+		WelcomePanel.setBounds(5, 20, 749, 50);
 		this.getContentPane().add(WelcomePanel);
 		WelcomePanel.setLayout(null);
 
 		JLabel Lbl_Welcome = new JLabel("Welcome !");
-		Lbl_Welcome.setBounds(331, 11, 71, 17);
+		Lbl_Welcome.setBounds(331, 11, 131, 17);
 		Lbl_Welcome.setFont(new Font("Tahoma", Font.BOLD, 14));
 		WelcomePanel.add(Lbl_Welcome);
 
 		JPanel OptionPanel = new JPanel();
-		OptionPanel.setBounds(5, 110, 780, 250);
+		OptionPanel.setBounds(5, 110, 749, 239);
 		this.getContentPane().add(OptionPanel);
 		OptionPanel.setLayout(null);
 
@@ -66,7 +66,7 @@ public class MainWindow extends JFrame {
 		OptionPanel.add(Btn_PredictNewMovie);
 
 		JPanel FooterPanel = new JPanel();
-		FooterPanel.setBounds(5, 409, 780, 60);
+		FooterPanel.setBounds(5, 374, 749, 95);
 		this.getContentPane().add(FooterPanel);
 		FooterPanel.setLayout(null);
 
@@ -88,7 +88,7 @@ public class MainWindow extends JFrame {
 				}
 			}
 		});
-		Btn_Close.setBounds(246, 3, 250, 55);
+		Btn_Close.setBounds(244, 8, 250, 80);
 		FooterPanel.add(Btn_Close);
 
 	}
