@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import sg.edu.nus.iss.msp.core.MovieService;
 import sg.edu.nus.iss.msp.model.Movie;
+import weka.gui.arffviewer.*;
 
 public class MainWindow extends JFrame {
 
@@ -98,6 +99,12 @@ public class MainWindow extends JFrame {
 			manageMovieDataWindow.setVisible(true);
 			manageMovieDataWindow.setLocation(getLocation());
 		}
+		//ArffViewer arffViewer = new ArffViewer();
+		//arffViewer.getComponents();
+		//arffViewer.setVisible(true);
+		//arffViewer.setLocation(getLocation());
+		
+		
 	}
 
 	private void PredictNewMovie() {

@@ -7,6 +7,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import sg.edu.nus.iss.msp.core.MovieService;
 import sg.edu.nus.iss.msp.model.Movie;
+import weka.gui.arffviewer.*;
 
 public class ManageMovieDataWindow extends JFrame {
 
@@ -41,7 +42,7 @@ public class ManageMovieDataWindow extends JFrame {
 		buttonPanel.setLayout(null);
 
 		JButton btnClose = new JButton("Close");
-		btnClose.setBounds(400, 5, 160, 55);
+		btnClose.setBounds(408, 0, 160, 55);
 		btnClose.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -79,8 +80,10 @@ public class ManageMovieDataWindow extends JFrame {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
+			
 		};
 		model.isCellEditable(0, 0);
+
 		JTable table = new JTable(model);
 		table.setFillsViewportHeight(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
