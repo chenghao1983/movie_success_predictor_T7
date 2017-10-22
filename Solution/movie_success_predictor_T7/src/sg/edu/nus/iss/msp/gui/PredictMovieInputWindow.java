@@ -228,43 +228,43 @@ public class PredictMovieInputWindow extends JFrame {
 		}
 		
 		
-		comboBox_MainActorName.addItem(new ComboItem("NA",""));
+		comboBox_MainActorName.addItem(new ComboItem("NA","NA"));
 		for (Object mainActorName : mapMainActorName.keySet()) {
 			itemMainActorName = new ComboItem(mainActorName.toString(), mapMainActorName.get(mainActorName).toString());
 			comboBox_MainActorName.addItem(itemMainActorName);
 		}
 		
-		comboBox_SecondActorName.addItem(new ComboItem("NA",""));
+		comboBox_SecondActorName.addItem(new ComboItem("NA","NA"));
 		for (Object secondActorName : mapSecondActorName.keySet()) {
 			itemSeconActorName = new ComboItem(secondActorName.toString(), mapSecondActorName.get(secondActorName).toString());
 			comboBox_SecondActorName.addItem(itemSeconActorName);
 		}
 		
-		comboBox_DirectorName.addItem(new ComboItem("NA",""));
+		comboBox_DirectorName.addItem(new ComboItem("NA","NA"));
 		for (Object directorName : mapDirectorName.keySet()) {
 			itemDirectorName = new ComboItem(directorName.toString(), mapDirectorName.get(directorName).toString());
 			comboBox_DirectorName.addItem(itemDirectorName);
 		}
 		
-		comboBox_Genre1.addItem(new ComboItem("NA",""));
+		comboBox_Genre1.addItem(new ComboItem("NA","NA"));
 		for (Object genre1 : mapGenre1.keySet()) {
 			itemGenre1 = new ComboItem(genre1.toString(), mapGenre1.get(genre1).toString());
 			comboBox_Genre1.addItem(genre1);
 		}
 		
-		comboBox_Genre2.addItem(new ComboItem("NA",""));
+		comboBox_Genre2.addItem(new ComboItem("NA","NA"));
 		for (Object genre2 : mapGenre2.keySet()) {
 			itemGenre2 = new ComboItem(genre2.toString(), mapGenre2.get(genre2).toString());
 			comboBox_Genre2.addItem(genre2);
 		}		
 		
-		comboBox_Genre3.addItem(new ComboItem("NA",""));
+		comboBox_Genre3.addItem(new ComboItem("NA","NA"));
 		for (Object genre3 : mapGenre3.values()) {
 			itemGenre3 = new ComboItem(genre3.toString(), mapGenre3.get(genre3).toString());
 			comboBox_Genre3.addItem(genre3);
 		}	
 		
-		comboBox_CountryOfOrigin.addItem(new ComboItem("NA",""));
+		comboBox_CountryOfOrigin.addItem(new ComboItem("NA","NA"));
 		for (Object countryOfOrigin : mapCountryOfOrigin.keySet()) {
 			itemCountryOfOrigin = new ComboItem(countryOfOrigin.toString(),mapCountryOfOrigin.get(countryOfOrigin).toString());
 			comboBox_CountryOfOrigin.addItem(itemCountryOfOrigin);
