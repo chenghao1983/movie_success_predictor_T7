@@ -147,7 +147,7 @@ public class MainWindow extends JFrame {
 		ImageIcon imgBackGround = new ImageIcon(imgFolderPath + "/dataset-card.png");
 
 		JLabel lblBkimg = new JLabel("");
-		lblBkimg.setBounds(0, 0, getWidth(), getHeight());
+		lblBkimg.setBounds(0, 0, 761 , 491);
 		lblBkimg.setIcon(imgBackGround);
 		getContentPane().add(lblBkimg);
 	}
