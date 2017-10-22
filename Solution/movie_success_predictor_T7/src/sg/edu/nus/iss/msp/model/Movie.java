@@ -4,15 +4,9 @@ public class Movie {
 
 	private String mainActorName;
 	
-	private double mainActorPopularity;
-	
 	private String secondActorName;
-
-	private double secondActorPopularity;
 	
 	private String directorName;
-
-	private double directorPopularity;
 
 	private String genre1;
 	
@@ -22,36 +16,10 @@ public class Movie {
 
 	private String countryOfOrigin;
 
-	private Double grossProfit;
-
 	private Double budget;
 	
 	private String result;
 	
-
-	public double getMainActorPopularity() {
-		return mainActorPopularity;
-	}
-
-	public void setMainActorPopularity(double mainActorPopularity) {
-		this.mainActorPopularity = mainActorPopularity;
-	}
-
-	public double getSecondActorPopularity() {
-		return secondActorPopularity;
-	}
-
-	public void setSecondActorPopularity(double secondActorPopularity) {
-		this.secondActorPopularity = secondActorPopularity;
-	}
-
-	public double getDirectorPopularity() {
-		return directorPopularity;
-	}
-
-	public void setDirectorPopularity(double directorPopularity) {
-		this.directorPopularity = directorPopularity;
-	}
 
 	public String getCountryOfOrigin() {
 		return countryOfOrigin;
@@ -61,24 +29,12 @@ public class Movie {
 		this.countryOfOrigin = countryOfOrigin;
 	}
 
-	public Double getGrossProfit() {
-		return grossProfit;
-	}
-
-	public void setGrossProfit(Double grossProfit) {
-		this.grossProfit = grossProfit;
-	}
-	
 	public Double getBudget() {
 		return budget;
 	}
 
 	public void setBudget(Double budget) {
 		this.budget = budget;
-	}
-
-	public Boolean getIsSuccess() {
-		return (getGrossProfit() / getBudget() > 1.65);
 	}
 
 	public String getMainActorName() {

@@ -16,6 +16,8 @@ import sg.edu.nus.iss.msp.model.Movie;
 import weka.core.pmml.jaxbbindings.Item;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class PredictMovieInputWindow extends JFrame {
 
@@ -25,11 +27,8 @@ public class PredictMovieInputWindow extends JFrame {
 	private Movie[] movies;
 	private JButton btnPredict;
 	private JComboBox<ComboItem> comboBox_MainActorName;
-	private JTextField txt_MainActorPopularity;
 	private JComboBox<ComboItem> comboBox_SecondActorName;
-	private JTextField txt_SecondActorPopularity;
 	private JComboBox<ComboItem> comboBox_DirectorName;
-	private JTextField txt_DirectorPopularity;
 	private JComboBox<ComboItem> comboBox_Genre1;
 	private JComboBox<ComboItem> comboBox_Genre2;
 	private JComboBox<ComboItem> comboBox_Genre3;
@@ -65,7 +64,7 @@ public class PredictMovieInputWindow extends JFrame {
 
 		getContentPane().setLayout(null);
 		JPanel intpuPane = new JPanel();
-		intpuPane.setBounds(10, 11, 760, 476);
+		intpuPane.setBounds(10, 11, 760, 461);
 		getContentPane().add(intpuPane);
 		intpuPane.setLayout(null);
 
@@ -77,79 +76,52 @@ public class PredictMovieInputWindow extends JFrame {
 		comboBox_MainActorName.setBounds(331, 18, 248, 20);
 		intpuPane.add(comboBox_MainActorName);
 
-		JLabel lblMainActorPopularity = new JLabel("Main Actor Popularity");
-		lblMainActorPopularity.setBounds(184, 56, 137, 14);
-		intpuPane.add(lblMainActorPopularity);
-
-		txt_MainActorPopularity = new JTextField();
-		txt_MainActorPopularity.setColumns(10);
-		txt_MainActorPopularity.setBounds(331, 53, 248, 20);
-		intpuPane.add(txt_MainActorPopularity);
-
 		JLabel lblSecondActorName = new JLabel("Second Actor Name");
-		lblSecondActorName.setBounds(184, 92, 137, 14);
+		lblSecondActorName.setBounds(184, 72, 137, 14);
 		intpuPane.add(lblSecondActorName);
 
 		comboBox_SecondActorName = new JComboBox<ComboItem>();
-		comboBox_SecondActorName.setBounds(331, 89, 248, 20);
+		comboBox_SecondActorName.setBounds(331, 69, 248, 20);
 		intpuPane.add(comboBox_SecondActorName);
 
-		JLabel lblSecondActorPopularity = new JLabel("Second Actor Popularity");
-		lblSecondActorPopularity.setBounds(184, 129, 137, 14);
-		intpuPane.add(lblSecondActorPopularity);
-
-		txt_SecondActorPopularity = new JTextField();
-		txt_SecondActorPopularity.setColumns(10);
-		txt_SecondActorPopularity.setBounds(331, 126, 248, 20);
-		intpuPane.add(txt_SecondActorPopularity);
-
 		JLabel lblDirectorName = new JLabel("Director Name");
-		lblDirectorName.setBounds(184, 170, 137, 14);
+		lblDirectorName.setBounds(184, 125, 137, 14);
 		intpuPane.add(lblDirectorName);
 
 		comboBox_DirectorName = new JComboBox<ComboItem>();
-		comboBox_DirectorName.setBounds(331, 167, 248, 20);
+		comboBox_DirectorName.setBounds(331, 122, 248, 20);
 		intpuPane.add(comboBox_DirectorName);
 
-		JLabel lblDirectorPopularity = new JLabel("Director Popularity");
-		lblDirectorPopularity.setBounds(184, 207, 137, 14);
-		intpuPane.add(lblDirectorPopularity);
-
-		txt_DirectorPopularity = new JTextField();
-		txt_DirectorPopularity.setColumns(10);
-		txt_DirectorPopularity.setBounds(331, 204, 248, 20);
-		intpuPane.add(txt_DirectorPopularity);
-
 		JLabel lblGenre1 = new JLabel("Genre 1");
-		lblGenre1.setBounds(184, 247, 137, 14);
+		lblGenre1.setBounds(184, 184, 137, 14);
 		intpuPane.add(lblGenre1);
 
 		comboBox_Genre1 = new JComboBox<ComboItem>();
-		comboBox_Genre1.setBounds(331, 244, 248, 20);
+		comboBox_Genre1.setBounds(331, 181, 248, 20);
 		intpuPane.add(comboBox_Genre1);
 
 		JLabel lblGenre2 = new JLabel("Genre 2");
-		lblGenre2.setBounds(184, 290, 137, 14);
+		lblGenre2.setBounds(184, 241, 137, 14);
 		intpuPane.add(lblGenre2);
 
 		comboBox_Genre2 = new JComboBox<ComboItem>();
-		comboBox_Genre2.setBounds(331, 287, 248, 20);
+		comboBox_Genre2.setBounds(331, 238, 248, 20);
 		intpuPane.add(comboBox_Genre2);
 
 		JLabel lblGenre3 = new JLabel("Genre 3");
-		lblGenre3.setBounds(184, 327, 137, 14);
+		lblGenre3.setBounds(184, 297, 137, 14);
 		intpuPane.add(lblGenre3);
 
 		comboBox_Genre3 = new JComboBox<ComboItem>();
-		comboBox_Genre3.setBounds(331, 324, 248, 20);
+		comboBox_Genre3.setBounds(331, 294, 248, 20);
 		intpuPane.add(comboBox_Genre3);
 
 		JLabel lblCountryOfOrigin = new JLabel("Country Of Origin");
-		lblCountryOfOrigin.setBounds(184, 367, 137, 14);
+		lblCountryOfOrigin.setBounds(184, 351, 137, 14);
 		intpuPane.add(lblCountryOfOrigin);
 
 		comboBox_CountryOfOrigin = new JComboBox<ComboItem>();
-		comboBox_CountryOfOrigin.setBounds(331, 364, 248, 20);
+		comboBox_CountryOfOrigin.setBounds(331, 348, 248, 20);
 		intpuPane.add(comboBox_CountryOfOrigin);
 
 		JLabel lblBudget = new JLabel("Budget");
@@ -197,6 +169,17 @@ public class PredictMovieInputWindow extends JFrame {
 		btnPredict.setBounds(154, 13, 160, 55);
 		buttonPanel.add(btnPredict);
 
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				mainWindow.setPredictMovieInputWindow(null);
+				if (predictMovieResultWindow != null) {
+					predictMovieResultWindow.dispose();
+				}
+				dispose();
+			}
+		});
+		
 		populateComboBox();
 	}
 
@@ -286,12 +269,8 @@ public class PredictMovieInputWindow extends JFrame {
 			if (getPredictMovieResultWindow() == null) {
 				Movie newMovie = new Movie();
 				newMovie.setMainActorName(mainActorName);
-				newMovie.setMainActorPopularity(mainActorPopularity);
 				newMovie.setSecondActorName(secondActorName);
-				newMovie.setSecondActorPopularity(secondActorPopularity);
 				newMovie.setDirectorName(directorName);
-				newMovie.setDirectorPopularity(directorPopularity);
-				newMovie.setDirectorPopularity(directorPopularity);
 				newMovie.setGenre1(genre1);
 				newMovie.setGenre2(genre2);
 				newMovie.setGenre2(genre3);
@@ -315,7 +294,7 @@ public class PredictMovieInputWindow extends JFrame {
 			return false;
 		}
 		try {
-			mainActorPopularity = Double.parseDouble(txt_MainActorPopularity.getText());
+			//mainActorPopularity = Double.parseDouble(txt_MainActorPopularity.getText());
 		} catch (Exception ex) {
 			return false;
 		}
@@ -324,7 +303,7 @@ public class PredictMovieInputWindow extends JFrame {
 			return false;
 		}
 		try {
-			secondActorPopularity = Double.parseDouble(txt_SecondActorPopularity.getText());
+			//secondActorPopularity = Double.parseDouble(txt_SecondActorPopularity.getText());
 		} catch (Exception ex) {
 			return false;
 		}
@@ -333,7 +312,7 @@ public class PredictMovieInputWindow extends JFrame {
 			return false;
 		}
 		try {
-			directorPopularity = Double.parseDouble(txt_DirectorPopularity.getText());
+			//directorPopularity = Double.parseDouble(txt_DirectorPopularity.getText());
 		} catch (Exception ex) {
 			return false;
 		}

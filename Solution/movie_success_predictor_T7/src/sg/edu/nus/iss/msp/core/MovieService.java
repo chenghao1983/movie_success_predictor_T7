@@ -112,18 +112,14 @@ public class MovieService {
 			Movie movie = new Movie();
 			Instance instance = instances.get(i);
 			movie.setMainActorName(instance.stringValue(0));
-			movie.setMainActorPopularity(instance.value(1));
-			movie.setSecondActorName(instance.stringValue(2));
-			movie.setSecondActorPopularity(instance.value(3));
-			movie.setDirectorName(instance.stringValue(4));
-			movie.setDirectorPopularity(instance.value(5));
-			movie.setGenre1(instance.stringValue(6));
-			movie.setGenre2(instance.stringValue(7));
-			movie.setGenre3(instance.stringValue(8));
-			movie.setCountryOfOrigin(instance.stringValue(9));
-			movie.setGrossProfit(instance.value(10));
-			movie.setBudget(instance.value(11));
-			movie.setResult(instance.stringValue(12));
+			movie.setSecondActorName(instance.stringValue(1));
+			movie.setDirectorName(instance.stringValue(2));
+			movie.setGenre1(instance.stringValue(3));
+			movie.setGenre2(instance.stringValue(4));
+			movie.setGenre3(instance.stringValue(5));
+			movie.setCountryOfOrigin(instance.stringValue(6));
+			movie.setBudget(instance.value(7));
+			movie.setResult(instance.stringValue(8));
 
 			movies[i] = movie;
 		}
