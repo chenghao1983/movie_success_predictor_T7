@@ -69,68 +69,68 @@ public class PredictMovieInputWindow extends JFrame {
 		intpuPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Main Actor Popularity");
-		lblNewLabel.setBounds(184, 21, 147, 14);
+		lblNewLabel.setBounds(162, 21, 147, 14);
 		intpuPane.add(lblNewLabel);
 
 		comboBox_MainActorName = new JComboBox<ComboItem>();
-		comboBox_MainActorName.setBounds(331, 18, 248, 20);
+		comboBox_MainActorName.setBounds(331, 18, 291, 20);
 		intpuPane.add(comboBox_MainActorName);
 
 		JLabel lblSecondActorName = new JLabel("Second Actor Popularity");
-		lblSecondActorName.setBounds(184, 72, 147, 14);
+		lblSecondActorName.setBounds(162, 72, 147, 14);
 		intpuPane.add(lblSecondActorName);
 
 		comboBox_SecondActorName = new JComboBox<ComboItem>();
-		comboBox_SecondActorName.setBounds(331, 69, 248, 20);
+		comboBox_SecondActorName.setBounds(331, 69, 291, 20);
 		intpuPane.add(comboBox_SecondActorName);
 
 		JLabel lblDirectorName = new JLabel("Director Popularity");
-		lblDirectorName.setBounds(184, 125, 147, 14);
+		lblDirectorName.setBounds(162, 125, 147, 14);
 		intpuPane.add(lblDirectorName);
 
 		comboBox_DirectorName = new JComboBox<ComboItem>();
-		comboBox_DirectorName.setBounds(331, 122, 248, 20);
+		comboBox_DirectorName.setBounds(331, 122, 291, 20);
 		intpuPane.add(comboBox_DirectorName);
 
 		JLabel lblGenre1 = new JLabel("Genre 1");
-		lblGenre1.setBounds(184, 184, 137, 14);
+		lblGenre1.setBounds(162, 184, 137, 14);
 		intpuPane.add(lblGenre1);
 
 		comboBox_Genre1 = new JComboBox<ComboItem>();
-		comboBox_Genre1.setBounds(331, 181, 248, 20);
+		comboBox_Genre1.setBounds(331, 181, 291, 20);
 		intpuPane.add(comboBox_Genre1);
 
 		JLabel lblGenre2 = new JLabel("Genre 2");
-		lblGenre2.setBounds(184, 241, 137, 14);
+		lblGenre2.setBounds(162, 241, 137, 14);
 		intpuPane.add(lblGenre2);
 
 		comboBox_Genre2 = new JComboBox<ComboItem>();
-		comboBox_Genre2.setBounds(331, 238, 248, 20);
+		comboBox_Genre2.setBounds(331, 238, 291, 20);
 		intpuPane.add(comboBox_Genre2);
 
 		JLabel lblGenre3 = new JLabel("Genre 3");
-		lblGenre3.setBounds(184, 297, 137, 14);
+		lblGenre3.setBounds(162, 297, 137, 14);
 		intpuPane.add(lblGenre3);
 
 		comboBox_Genre3 = new JComboBox<ComboItem>();
-		comboBox_Genre3.setBounds(331, 294, 248, 20);
+		comboBox_Genre3.setBounds(331, 294, 291, 20);
 		intpuPane.add(comboBox_Genre3);
 
 		JLabel lblCountryOfOrigin = new JLabel("Country Of Origin");
-		lblCountryOfOrigin.setBounds(184, 351, 137, 14);
+		lblCountryOfOrigin.setBounds(162, 351, 137, 14);
 		intpuPane.add(lblCountryOfOrigin);
 
 		comboBox_CountryOfOrigin = new JComboBox<ComboItem>();
-		comboBox_CountryOfOrigin.setBounds(331, 348, 248, 20);
+		comboBox_CountryOfOrigin.setBounds(331, 348, 291, 20);
 		intpuPane.add(comboBox_CountryOfOrigin);
 
 		JLabel lblBudget = new JLabel("Budget");
-		lblBudget.setBounds(184, 408, 137, 14);
+		lblBudget.setBounds(162, 408, 137, 14);
 		intpuPane.add(lblBudget);
 
 		txt_Budget = new JTextField();
 		txt_Budget.setColumns(10);
-		txt_Budget.setBounds(331, 405, 248, 20);
+		txt_Budget.setBounds(331, 405, 291, 20);
 		intpuPane.add(txt_Budget);
 
 		lblMsg = new JLabel("");
@@ -162,7 +162,6 @@ public class PredictMovieInputWindow extends JFrame {
 		btnPredict = new JButton("Predict");
 		btnPredict.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO
 				predict();
 			}
 		});
@@ -195,15 +194,15 @@ public class PredictMovieInputWindow extends JFrame {
 		
 
 		for (Movie movie : movies) {
-			if (!listMainActorName.contains(movie.getMainActorName())) {
-				listMainActorName.add(movie.getMainActorName());
-			}
-			if (!listSecondActorName.contains(movie.getSecondActorName())) {
-				listSecondActorName.add(movie.getSecondActorName());
-			}
-			if (!listDirectorName.contains(movie.getDirectorName())) {
-				listDirectorName.add(movie.getDirectorName());
-			}
+			//if (!listMainActorName.contains(movie.getMainActorName())) {
+			//	listMainActorName.add(movie.getMainActorName());
+			//}
+			//if (!listSecondActorName.contains(movie.getSecondActorName())) {
+			//	listSecondActorName.add(movie.getSecondActorName());
+			//}
+			//if (!listDirectorName.contains(movie.getDirectorName())) {
+			//	listDirectorName.add(movie.getDirectorName());
+			//}
 			if (!listGenre1.contains(movie.getGenre1())) {
 				listGenre1.add(movie.getGenre1());
 			}
@@ -218,49 +217,57 @@ public class PredictMovieInputWindow extends JFrame {
 			}
 		}
 
-		Collections.sort(listMainActorName);
-		Collections.sort(listSecondActorName);
-		Collections.sort(listDirectorName);
+		//Collections.sort(listMainActorName);
+		//Collections.sort(listSecondActorName);
+		//Collections.sort(listDirectorName);
 		Collections.sort(listGenre1);
 		Collections.sort(listGenre2);
 		Collections.sort(listGenre3);
 		Collections.sort(listCountryOfOrigin);
 		
-		comboBox_MainActorName.addItem(new ComboItem("NA", "NA"));
+		//comboBox_MainActorName.addItem(new ComboItem("NA", "NA"));
 		comboBox_MainActorName.addItem(new ComboItem("Amateur - Facebook like < 1000", "Amateur"));
-		comboBox_MainActorName.addItem(new ComboItem("Star - Facebook like between 1000 ans 5000", "Star"));
+		comboBox_MainActorName.addItem(new ComboItem("Star - Facebook like between 1000 and 5000", "Star"));
 		comboBox_MainActorName.addItem(new ComboItem("Super Star - Facebook > 5000", "Super Star"));
 		
-		for (String mainActorName : listMainActorName) {
-			//comboBox_MainActorName.addItem(new ComboItem(mainActorName, mainActorName));
-		}
+		//for (String mainActorName : listMainActorName) {
+		//	comboBox_MainActorName.addItem(new ComboItem(mainActorName, mainActorName));
+		//}
 
-		comboBox_SecondActorName.addItem(new ComboItem("NA", "NA"));		
-		for (String secondActorName : listSecondActorName) {
-			comboBox_SecondActorName.addItem(new ComboItem(secondActorName, secondActorName));
-		}
+		//comboBox_SecondActorName.addItem(new ComboItem("NA", "NA"));		
+		comboBox_SecondActorName.addItem(new ComboItem("Amateur - Facebook like < 1000", "Amateur"));
+		comboBox_SecondActorName.addItem(new ComboItem("Star - Facebook like between 1000 and 5000", "Star"));
+		comboBox_SecondActorName.addItem(new ComboItem("Super Star - Facebook > 5000", "Super Star"));
+		
+		//for (String secondActorName : listSecondActorName) {
+		//	comboBox_SecondActorName.addItem(new ComboItem(secondActorName, secondActorName));
+		//}
 
-		comboBox_DirectorName.addItem(new ComboItem("NA", "NA"));		
-		for (String directorName : listDirectorName) {
-			comboBox_DirectorName.addItem(new ComboItem(directorName, directorName));
-		}
+		//comboBox_DirectorName.addItem(new ComboItem("NA", "NA"));	
+		comboBox_DirectorName.addItem(new ComboItem("Amateur - Facebook like < 100", "Amateur"));
+		comboBox_DirectorName.addItem(new ComboItem("Star - Facebook like between 100 and 1000", "Star"));
+		comboBox_DirectorName.addItem(new ComboItem("Super Star - Facebook > 1000", "Super Star"));
+		
+		//for (String directorName : listDirectorName) {
+		//	comboBox_DirectorName.addItem(new ComboItem(directorName, directorName));
+		//}
 
-		comboBox_Genre1.addItem(new ComboItem("NA", "NA"));
+		//comboBox_Genre1.addItem(new ComboItem("NA", "NA"));
 		for (String genre1 : listGenre1) {
 			comboBox_Genre1.addItem(new ComboItem(genre1, genre1));
 		}		
 		
-		comboBox_Genre2.addItem(new ComboItem("NA", "NA"));
+		//comboBox_Genre2.addItem(new ComboItem("NA", "NA"));
 		for (String genre2 : listGenre2) {
 			comboBox_Genre2.addItem(new ComboItem(genre2, genre2));
 		}			
 
-		comboBox_Genre3.addItem(new ComboItem("NA", "NA"));
+		//comboBox_Genre3.addItem(new ComboItem("NA", "NA"));
 		for (String genre3 : listGenre3) {
 			comboBox_Genre3.addItem(new ComboItem(genre3, genre3));
 		}		
 
-		comboBox_CountryOfOrigin.addItem(new ComboItem("NA", "NA"));
+		//comboBox_CountryOfOrigin.addItem(new ComboItem("NA", "NA"));
 		for (String countryOfOrigin : listCountryOfOrigin) {
 			comboBox_CountryOfOrigin.addItem(new ComboItem(countryOfOrigin, countryOfOrigin));
 		}	
