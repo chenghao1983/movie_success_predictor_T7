@@ -2,6 +2,7 @@ package sg.edu.nus.iss.msp.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -200,15 +201,6 @@ public class PredictMovieInputWindow extends JFrame {
 	}
 
 	private void populateComboBox() {
-
-		HashMap mapMainActorName = new HashMap();
-		HashMap mapSecondActorName = new HashMap();
-		HashMap mapDirectorName = new HashMap();
-		HashMap mapGenre1 = new HashMap();
-		HashMap mapGenre2 = new HashMap();
-		HashMap mapGenre3 = new HashMap();
-		HashMap mapCountryOfOrigin = new HashMap();
-
 		ComboItem itemMainActorName;
 		ComboItem itemSeconActorName;
 		ComboItem itemDirectorName;
@@ -217,62 +209,85 @@ public class PredictMovieInputWindow extends JFrame {
 		ComboItem itemGenre3;
 		ComboItem itemCountryOfOrigin;
 
+		ArrayList<String> listMainActorName = new ArrayList<String>();
+		ArrayList<String> listSecondActorName = new ArrayList<String>();
+		ArrayList<String> listDirectorName = new ArrayList<String>();
+		ArrayList<String> listGenre1 = new ArrayList<String>();
+		ArrayList<String> listGenre2 = new ArrayList<String>();
+		ArrayList<String> listGenre3 = new ArrayList<String>();
+		ArrayList<String> listCountryOfOrigin = new ArrayList<String>();
+		
+
 		for (Movie movie : movies) {
-			mapMainActorName.put(movie.getMainActorName(), movie.getMainActorName());
-			mapSecondActorName.put(movie.getSecondActorName(), movie.getSecondActorName());
-			mapDirectorName.put(movie.getDirectorName(), movie.getDirectorName());
-			mapGenre1.put(movie.getGenre1(), movie.getGenre1());
-			mapGenre2.put(movie.getGenre2(), movie.getGenre2());
-			mapGenre3.put(movie.getGenre3(), movie.getGenre3());
-			mapCountryOfOrigin.put(movie.getCountryOfOrigin(), movie.getCountryOfOrigin());
+			if (!listMainActorName.contains(movie.getMainActorName())) {
+				listMainActorName.add(movie.getMainActorName());
+			}
+			if (!listSecondActorName.contains(movie.getSecondActorName())) {
+				listSecondActorName.add(movie.getSecondActorName());
+			}
+			if (!listDirectorName.contains(movie.getDirectorName())) {
+				listDirectorName.add(movie.getDirectorName());
+			}
+			if (!listGenre1.contains(movie.getGenre1())) {
+				listGenre1.add(movie.getGenre1());
+			}
+			if (!listGenre2.contains(movie.getGenre2())) {
+				listGenre2.add(movie.getGenre2());
+			}
+			if (!listGenre3.contains(movie.getGenre3())) {
+				listGenre3.add(movie.getGenre3());
+			}
+			if (!listCountryOfOrigin.contains(movie.getCountryOfOrigin())) {
+				listCountryOfOrigin.add(movie.getCountryOfOrigin());
+			}
 		}
+
+		Collections.sort(listMainActorName);
+		Collections.sort(listSecondActorName);
+		Collections.sort(listDirectorName);
+		Collections.sort(listGenre1);
+		Collections.sort(listGenre2);
+		Collections.sort(listGenre3);
+		Collections.sort(listCountryOfOrigin);
 		
-		
-		comboBox_MainActorName.addItem(new ComboItem("NA","NA"));
-		for (Object mainActorName : mapMainActorName.keySet()) {
-			itemMainActorName = new ComboItem(mainActorName.toString(), mapMainActorName.get(mainActorName).toString());
-			comboBox_MainActorName.addItem(itemMainActorName);
+		comboBox_MainActorName.addItem(new ComboItem("NA", "NA"));
+		for (String mainActorName : listMainActorName) {
+			comboBox_MainActorName.addItem(new ComboItem(mainActorName, mainActorName));
 		}
-		
-		comboBox_SecondActorName.addItem(new ComboItem("NA","NA"));
-		for (Object secondActorName : mapSecondActorName.keySet()) {
-			itemSeconActorName = new ComboItem(secondActorName.toString(), mapSecondActorName.get(secondActorName).toString());
-			comboBox_SecondActorName.addItem(itemSeconActorName);
+
+		comboBox_SecondActorName.addItem(new ComboItem("NA", "NA"));		
+		for (String secondActorName : listSecondActorName) {
+			comboBox_SecondActorName.addItem(new ComboItem(secondActorName, secondActorName));
 		}
-		
-		comboBox_DirectorName.addItem(new ComboItem("NA","NA"));
-		for (Object directorName : mapDirectorName.keySet()) {
-			itemDirectorName = new ComboItem(directorName.toString(), mapDirectorName.get(directorName).toString());
-			comboBox_DirectorName.addItem(itemDirectorName);
+
+		comboBox_DirectorName.addItem(new ComboItem("NA", "NA"));		
+		for (String directorName : listDirectorName) {
+			comboBox_DirectorName.addItem(new ComboItem(directorName, directorName));
 		}
-		
-		comboBox_Genre1.addItem(new ComboItem("NA","NA"));
-		for (Object genre1 : mapGenre1.keySet()) {
-			itemGenre1 = new ComboItem(genre1.toString(), mapGenre1.get(genre1).toString());
-			comboBox_Genre1.addItem(genre1);
-		}
-		
-		comboBox_Genre2.addItem(new ComboItem("NA","NA"));
-		for (Object genre2 : mapGenre2.keySet()) {
-			itemGenre2 = new ComboItem(genre2.toString(), mapGenre2.get(genre2).toString());
-			comboBox_Genre2.addItem(genre2);
+
+		comboBox_Genre1.addItem(new ComboItem("NA", "NA"));
+		for (String genre1 : listGenre1) {
+			comboBox_Genre1.addItem(new ComboItem(genre1, genre1));
 		}		
 		
-		comboBox_Genre3.addItem(new ComboItem("NA","NA"));
-		for (Object genre3 : mapGenre3.values()) {
-			itemGenre3 = new ComboItem(genre3.toString(), mapGenre3.get(genre3).toString());
-			comboBox_Genre3.addItem(genre3);
+		comboBox_Genre2.addItem(new ComboItem("NA", "NA"));
+		for (String genre2 : listGenre2) {
+			comboBox_Genre2.addItem(new ComboItem(genre2, genre2));
+		}			
+
+		comboBox_Genre3.addItem(new ComboItem("NA", "NA"));
+		for (String genre3 : listGenre3) {
+			comboBox_Genre3.addItem(new ComboItem(genre3, genre3));
+		}		
+
+		comboBox_CountryOfOrigin.addItem(new ComboItem("NA", "NA"));
+		for (String countryOfOrigin : listCountryOfOrigin) {
+			comboBox_CountryOfOrigin.addItem(new ComboItem(countryOfOrigin, countryOfOrigin));
 		}	
-		
-		comboBox_CountryOfOrigin.addItem(new ComboItem("NA","NA"));
-		for (Object countryOfOrigin : mapCountryOfOrigin.keySet()) {
-			itemCountryOfOrigin = new ComboItem(countryOfOrigin.toString(),mapCountryOfOrigin.get(countryOfOrigin).toString());
-			comboBox_CountryOfOrigin.addItem(itemCountryOfOrigin);
-		}	
+
 	}
 
 	private void predict() {
-		// TODO Auto-generated method stub
 		lblMsg.setText("");
 		if (validateForm()) {
 			if (getPredictMovieResultWindow() == null) {
