@@ -16,7 +16,7 @@ public class ManageMovieDataWindow extends JFrame {
 	private Movie[] movies;
 
 	private String[] columns = new String[] { "Main Actor Name", "Main Actor Popularity", "Secondary Actor Name",
-			"Secondary Actor Popularity", "Director Name", "Director Popularity", "Genre", 
+			"Secondary Actor Popularity", "Director Name", "Director Popularity", "Genre1", "Genre2", "Genre3", 
 			"Country of Origin ", "Gross Profit", "Budget", "Result" };
 
 	public ManageMovieDataWindow(MainWindow mainWindow, MovieService movieService) {
@@ -63,11 +63,13 @@ public class ManageMovieDataWindow extends JFrame {
 			values[3] = String.format("%1$,.0f", movies[i].getSecondActorPopularity());  
 			values[4] = movies[i].getDirectorName();
 			values[5] = String.format("%1$,.0f", movies[i].getDirectorPopularity()); 
-			values[6] = movies[i].getGenre();
-			values[7] = movies[i].getCountryOfOrigin();
-			values[8] = String.format("%1$,.0f", movies[i].getGrossProfit()); 
-			values[9] = String.format("%1$,.0f", movies[i].getBudget()); 
-			values[10] = movies[i].getResult();
+			values[6] = movies[i].getGenre1();
+			values[7] = movies[i].getGenre2();
+			values[8] = movies[i].getGenre3();
+			values[9] = movies[i].getCountryOfOrigin();
+			values[10] = String.format("%1$,.0f", movies[i].getGrossProfit()); 
+			values[11] = String.format("%1$,.0f", movies[i].getBudget()); 
+			values[12] = movies[i].getResult();
 					
 			data[i] = values;
 		}
