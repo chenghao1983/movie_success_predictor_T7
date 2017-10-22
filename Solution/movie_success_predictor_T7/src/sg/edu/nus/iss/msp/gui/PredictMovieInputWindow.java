@@ -24,16 +24,16 @@ public class PredictMovieInputWindow extends JFrame {
 	private MovieService movieService;
 	private Movie[] movies;
 	private JButton btnPredict;
-	private JComboBox comboBox_MainActorName;
+	private JComboBox<ComboItem> comboBox_MainActorName;
 	private JTextField txt_MainActorPopularity;
-	private JComboBox comboBox_SecondActorName;
+	private JComboBox<ComboItem> comboBox_SecondActorName;
 	private JTextField txt_SecondActorPopularity;
-	private JComboBox comboBox_DirectorName;
+	private JComboBox<ComboItem> comboBox_DirectorName;
 	private JTextField txt_DirectorPopularity;
-	private JComboBox comboBox_Genre1;
-	private JComboBox comboBox_Genre2;
-	private JComboBox comboBox_Genre3;
-	private JComboBox comboBox_CountryOfOrigin;
+	private JComboBox<ComboItem> comboBox_Genre1;
+	private JComboBox<ComboItem> comboBox_Genre2;
+	private JComboBox<ComboItem> comboBox_Genre3;
+	private JComboBox<ComboItem> comboBox_CountryOfOrigin;
 	private JTextField txt_Budget;
 	private JLabel lblMsg;
 
@@ -73,7 +73,7 @@ public class PredictMovieInputWindow extends JFrame {
 		lblNewLabel.setBounds(184, 21, 137, 14);
 		intpuPane.add(lblNewLabel);
 
-		comboBox_MainActorName = new JComboBox();
+		comboBox_MainActorName = new JComboBox<ComboItem>();
 		comboBox_MainActorName.setBounds(331, 18, 248, 20);
 		intpuPane.add(comboBox_MainActorName);
 
@@ -90,7 +90,7 @@ public class PredictMovieInputWindow extends JFrame {
 		lblSecondActorName.setBounds(184, 92, 137, 14);
 		intpuPane.add(lblSecondActorName);
 
-		comboBox_SecondActorName = new JComboBox();
+		comboBox_SecondActorName = new JComboBox<ComboItem>();
 		comboBox_SecondActorName.setBounds(331, 89, 248, 20);
 		intpuPane.add(comboBox_SecondActorName);
 
@@ -107,7 +107,7 @@ public class PredictMovieInputWindow extends JFrame {
 		lblDirectorName.setBounds(184, 170, 137, 14);
 		intpuPane.add(lblDirectorName);
 
-		comboBox_DirectorName = new JComboBox();
+		comboBox_DirectorName = new JComboBox<ComboItem>();
 		comboBox_DirectorName.setBounds(331, 167, 248, 20);
 		intpuPane.add(comboBox_DirectorName);
 
@@ -124,7 +124,7 @@ public class PredictMovieInputWindow extends JFrame {
 		lblGenre1.setBounds(184, 247, 137, 14);
 		intpuPane.add(lblGenre1);
 
-		comboBox_Genre1 = new JComboBox();
+		comboBox_Genre1 = new JComboBox<ComboItem>();
 		comboBox_Genre1.setBounds(331, 244, 248, 20);
 		intpuPane.add(comboBox_Genre1);
 
@@ -132,7 +132,7 @@ public class PredictMovieInputWindow extends JFrame {
 		lblGenre2.setBounds(184, 290, 137, 14);
 		intpuPane.add(lblGenre2);
 
-		comboBox_Genre2 = new JComboBox();
+		comboBox_Genre2 = new JComboBox<ComboItem>();
 		comboBox_Genre2.setBounds(331, 287, 248, 20);
 		intpuPane.add(comboBox_Genre2);
 
@@ -140,7 +140,7 @@ public class PredictMovieInputWindow extends JFrame {
 		lblGenre3.setBounds(184, 327, 137, 14);
 		intpuPane.add(lblGenre3);
 
-		comboBox_Genre3 = new JComboBox();
+		comboBox_Genre3 = new JComboBox<ComboItem>();
 		comboBox_Genre3.setBounds(331, 324, 248, 20);
 		intpuPane.add(comboBox_Genre3);
 
@@ -148,7 +148,7 @@ public class PredictMovieInputWindow extends JFrame {
 		lblCountryOfOrigin.setBounds(184, 367, 137, 14);
 		intpuPane.add(lblCountryOfOrigin);
 
-		comboBox_CountryOfOrigin = new JComboBox();
+		comboBox_CountryOfOrigin = new JComboBox<ComboItem>();
 		comboBox_CountryOfOrigin.setBounds(331, 364, 248, 20);
 		intpuPane.add(comboBox_CountryOfOrigin);
 
@@ -201,13 +201,6 @@ public class PredictMovieInputWindow extends JFrame {
 	}
 
 	private void populateComboBox() {
-		ComboItem itemMainActorName;
-		ComboItem itemSeconActorName;
-		ComboItem itemDirectorName;
-		ComboItem itemGenre1;
-		ComboItem itemGenre2;
-		ComboItem itemGenre3;
-		ComboItem itemCountryOfOrigin;
 
 		ArrayList<String> listMainActorName = new ArrayList<String>();
 		ArrayList<String> listSecondActorName = new ArrayList<String>();
