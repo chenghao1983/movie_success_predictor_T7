@@ -2,11 +2,11 @@ package sg.edu.nus.iss.msp.model;
 
 public class Movie {
 
-	private String mainActorName;
+	private String mainActorPopularity;
 	
-	private String secondActorName;
+	private String secondActorPopularity;
 	
-	private String directorName;
+	private String directorPopularity;
 
 	private String genre1;
 	
@@ -37,28 +37,28 @@ public class Movie {
 		this.budget = budget;
 	}
 
-	public String getMainActorName() {
-		return mainActorName;
+	public String getMainActorPopularity() {
+		return mainActorPopularity;
 	}
 
-	public void setMainActorName(String mainActorName) {
-		this.mainActorName = mainActorName;
+	public void setMainActorPopularity(String mainActorPopularity) {
+		this.mainActorPopularity = mainActorPopularity;
 	}
 
-	public String getSecondActorName() {
-		return secondActorName;
+	public String getSecondActorPopularity() {
+		return secondActorPopularity;
 	}
 
-	public void setSecondActorName(String secondActorName) {
-		this.secondActorName = secondActorName;
+	public void setSecondActorPopularity(String secondActorPopularity) {
+		this.secondActorPopularity = secondActorPopularity;
 	}
 
-	public String getDirectorName() {
-		return directorName;
+	public String getDirectorPopularity() {
+		return directorPopularity;
 	}
 
-	public void setDirectorName(String directorName) {
-		this.directorName = directorName;
+	public void setDirectorPopularity(String directorPopularity) {
+		this.directorPopularity = directorPopularity;
 	}
 
 	public String getResult() {

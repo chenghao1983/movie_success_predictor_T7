@@ -111,9 +111,9 @@ public class MovieService {
 		for (int i = 0; i < movies.length; i++) {
 			Movie movie = new Movie();
 			Instance instance = instances.get(i);
-			movie.setMainActorName(instance.stringValue(0));
-			movie.setSecondActorName(instance.stringValue(1));
-			movie.setDirectorName(instance.stringValue(2));
+			movie.setMainActorPopularity(instance.stringValue(0));
+			movie.setSecondActorPopularity(instance.stringValue(1));
+			movie.setDirectorPopularity(instance.stringValue(2));
 			movie.setGenre1(instance.stringValue(3));
 			movie.setGenre2(instance.stringValue(4));
 			movie.setGenre3(instance.stringValue(5));

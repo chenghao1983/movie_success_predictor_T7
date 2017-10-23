@@ -8,11 +8,14 @@ import javax.swing.table.DefaultTableModel;
 import sg.edu.nus.iss.msp.core.MovieService;
 import sg.edu.nus.iss.msp.model.Movie;
 import weka.gui.arffviewer.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ManageMovieDataWindow extends JFrame {
 
 	private MainWindow mainWindow;
 	private MovieService movieService;
+	private NewMovieInputWindow newMovieInputWindow;
 
 	private Movie[] movies;
 
@@ -21,6 +24,16 @@ public class ManageMovieDataWindow extends JFrame {
 			"Country of Origin ", "Budget", "Result" };
 
 	public ManageMovieDataWindow(MainWindow mainWindow, MovieService movieService) {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				mainWindow.setManageMovieDataWindow(null);
+				if (getNewMovieInputWindow() != null) {
+					getNewMovieInputWindow().dispose();
+				}
+				dispose();
+			}
+		});
 		this.movieService = movieService;
 		this.mainWindow = mainWindow;
 		this.movies = movieService.getMovies();
@@ -42,25 +55,41 @@ public class ManageMovieDataWindow extends JFrame {
 		buttonPanel.setLayout(null);
 
 		JButton btnClose = new JButton("Close");
-		btnClose.setBounds(408, 0, 160, 55);
+		btnClose.setBounds(560, 4, 160, 55);
 		btnClose.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				mainWindow.setManageMovieDataWindow(null);
+				if (getNewMovieInputWindow() != null) {
+					getNewMovieInputWindow().dispose();
+				}
 				dispose();
 			}
 
 		});
 		buttonPanel.add(btnClose);
+		
+		JButton btnAddNewMovie = new JButton("Add New Movie");
+		btnAddNewMovie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				addNewMovie();
+				
+			}
+
+			
+		});
+		btnAddNewMovie.setBounds(269, 4, 160, 55);
+		buttonPanel.add(btnAddNewMovie);
 
 		// jTable Data Display
 		Object[][] data = new Object[movies.length][];
 
 		for (int i = 0; i < movies.length; i++) {
 			String[] values = new String[columns.length];
-			values[0] = movies[i].getMainActorName();
-			values[1] = movies[i].getSecondActorName();
-			values[2] = movies[i].getDirectorName();
+			values[0] = movies[i].getMainActorPopularity();
+			values[1] = movies[i].getSecondActorPopularity();
+			values[2] = movies[i].getDirectorPopularity();
 			values[3] = movies[i].getGenre1();
 			values[4] = movies[i].getGenre2();
 			values[5] = movies[i].getGenre3();
@@ -86,5 +115,24 @@ public class ManageMovieDataWindow extends JFrame {
 		scrollPane.setViewportView(table);
 
 	}
+	
+	
+	private void addNewMovie() {
+		if (getNewMovieInputWindow() == null) {
+			setNewMovieInputWindow(new NewMovieInputWindow(this, movieService));
+			getNewMovieInputWindow().setVisible(true);
+			getNewMovieInputWindow().setLocation(getLocation());
+		}
+		
+	}
 
+	public NewMovieInputWindow getNewMovieInputWindow() {
+		return newMovieInputWindow;
+	}
+
+	public void setNewMovieInputWindow(NewMovieInputWindow newMovieInputWindow) {
+		this.newMovieInputWindow = newMovieInputWindow;
+	}
+	
+	
 }
