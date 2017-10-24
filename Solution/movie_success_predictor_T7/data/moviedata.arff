@@ -3,12 +3,12 @@
 @attribute MainActorName {"Amateur", "Star", "Super Star"}
 @attribute SecondActorName {"Amateur", "Star", "Super Star"}
 @attribute DirectorName {"Amateur", "Star", "Super Star"}
-@attribute Genre1 {Action, Adventure, Animation, Comedy, Drama, Biography, Crime, Fantasy, Horror, Romance, Mystery, Family, Documentary}
-@attribute Genre2 {Adventure, Animation, Family, Crime, Comedy, Drama, Fantasy, Horror, Mystery, Sci-Fi, Romance, History, Musical, Music, Biography, Thriller, War, Documentary}
-@attribute Genre3 {Fantasy, Sci-Fi, Romance, Comedy, Western, Family, Drama, Thriller, Horror, Crime, Animation, History, Mystery, Sport, War, Biography, Musical, Music, Documentary, Film-Noir}
+@attribute Genre1 {"Action", "Adventure", "Animation", "Comedy", "Drama", "Biography", "Crime", "Fantasy", "Horror", "Romance", "Mystery", "Family", "Documentary"}
+@attribute Genre2 {"Adventure", "Animation", "Family", "Crime", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Sci-Fi", "Romance", "History", "Musical", "Music", "Biography", "Thriller", "War", "Documentary"}
+@attribute Genre3 {"Fantasy", "Sci-Fi", "Romance", "Comedy", "Western", "Family", "Drama", "Thriller", "Horror", "Crime", "Animation", "History", "Mystery", "Sport", "War", "Biography", "Musical", "Music", "Documentary", "Film-Noir"}
 @attribute CountryOfOrigin {"USA", "UK", "New Zealand", "Canada", "Germany", "Australia", "China", "France", "Japan", "Spain", "Hong Kong", "Czech Republic", "Peru", "South Korea", "India", "Aruba", "Denmark", "Belgium", "South Africa", "Romania", "Chile", "Italy", "Netherlands", "Hungary", "Russia", "Greece", "Ireland", "Taiwan", "Iran", "West Germany", "Georgia", "Mexico", "Iceland", "Thailand", "Brazil", "Norway", "Argentina", "Poland", "Israel", "Indonesia", "Sweden"}
 @attribute Budget REAL
-@attribute Result {Success, Fail}
+@attribute Result {"Success", "Fail"}
 
 @data
 "Star", "Amateur", "Super Star", "Action", "Adventure", "Fantasy", "USA", 237000000, "Success"

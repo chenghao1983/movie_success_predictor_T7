@@ -1,9 +1,11 @@
 package sg.edu.nus.iss.msp.core;
 
 import java.io.*;
+import java.util.Enumeration;
 import java.util.Iterator;
 
 import weka.core.Attribute;
+import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
 
@@ -38,7 +40,7 @@ public class MovieService {
 		}
 		// setting class attribute
 		instances.setClassIndex(instances.numAttributes() - 1);
-
+	
 	}
 
 	public boolean predictMovieSuccess(Movie movie)	{
@@ -49,11 +51,53 @@ public class MovieService {
 		
 		return true;
 	}
+	
+	
+	public boolean AddMovie(Movie newMovie) {
+		Instance newInstance = new DenseInstance(9);
+		newInstance.setDataset(instances);
+		newInstance.setValue(instances.attribute(0), newMovie.getMainActorPopularity());
+		newInstance.setValue(instances.attribute(1), newMovie.getSecondActorPopularity());
+		newInstance.setValue(instances.attribute(2), newMovie.getDirectorPopularity());
+		newInstance.setValue(instances.attribute(3), newMovie.getGenre1());
+		newInstance.setValue(instances.attribute(4), newMovie.getGenre2());
+		newInstance.setValue(instances.attribute(5), newMovie.getGenre3());
+		newInstance.setValue(instances.attribute(6), newMovie.getCountryOfOrigin());
+		newInstance.setValue(instances.attribute(7), newMovie.getBudget());
+		newInstance.setValue(instances.attribute(8), newMovie.getResult());
+		
+		instances.add(newInstance);
+	
+		System.out.println(instances);
+		
+		
+		/*
+		
+		BufferedWriter writer =null;
+		
+		try {
+			writer = new BufferedWriter(new FileWriter(getInputDataFilePath()));
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 
-	public void saveData(Movie[] movies) {
-		// TODO
-
+		
+		
+		try {
+			writer.write(instances.toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	*/
+		
+		return false;
 	}
+	
+	
+
 
 	public String getInputDataFilePath() throws IOException {
 		String currentDirectory = null;
@@ -124,4 +168,6 @@ public class MovieService {
 			movies[i] = movie;
 		}
 	}
+
+
 }

@@ -201,6 +201,7 @@ public class NewMovieInputWindow extends JFrame {
 			newMovie.setBudget(budget);
 			newMovie.setResult(result);
 
+			boolean movieAdded = movieService.AddMovie(newMovie);
 		} else {
 			lblMsg.setText("Invalid input");
 		}
@@ -235,6 +236,12 @@ public class NewMovieInputWindow extends JFrame {
 		if (countryOfOrigin.length() == 0) {
 			return false;
 		}
+		try {
+			budget = Double.parseDouble(txt_Budget.getText());
+		} catch (Exception ex) {
+			return false;
+		}
+		
 		result = ((ComboItem) comboBox_Result.getSelectedItem()).getValue();
 		return true;
 	}
