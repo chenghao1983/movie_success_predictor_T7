@@ -43,6 +43,16 @@ public class MovieService {
 	
 	}
 
+	public boolean trainModel() {
+		// TODO Auto-generated method stub
+		
+		
+		
+		
+		return true;
+	}
+	
+	
 	public boolean predictMovieSuccess(Movie movie)	{
 		// TODO: add ML code here
 		
@@ -168,6 +178,8 @@ public class MovieService {
 			movies[i] = movie;
 		}
 	}
+
+	
 
 
 }

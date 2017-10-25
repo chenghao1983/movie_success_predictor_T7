@@ -116,6 +116,15 @@ public class MainWindow extends JFrame {
 				PredictNewMovie();
 			}
 		});
+		
+		JMenuItem mntmNewMenuItem_TrainModel = new JMenuItem("Train Model");
+		mntmNewMenuItem_TrainModel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TrainModel();
+				
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_TrainModel);
 		mnNewMenu.add(mntmNewMenuItem_PredictNewMovie);
 
 		JMenuItem mntmNewMenuItem_ViewMovieData = new JMenuItem("View Movie Data");
@@ -150,6 +159,19 @@ public class MainWindow extends JFrame {
 		lblBkimg.setBounds(0, 0, 761 , 491);
 		lblBkimg.setIcon(imgBackGround);
 		getContentPane().add(lblBkimg);
+	}
+
+	private void TrainModel() {
+		// TODO train model
+		if(movieService.trainModel())
+		{
+			JOptionPane.showMessageDialog(this, "Model has been trained successfully");
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(this, "Failed to train Model. Please try again");
+		}
+		
 	}
 
 	private void ManageMovieData() {
