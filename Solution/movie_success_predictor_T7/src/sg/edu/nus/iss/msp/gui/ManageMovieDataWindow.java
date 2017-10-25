@@ -19,8 +19,8 @@ public class ManageMovieDataWindow extends JFrame {
 
 	private Movie[] movies;
 
-	private String[] columns = new String[] { "Main Actor Name",  "Secondary Actor Name",
-			"Director Name",  "Genre1", "Genre2", "Genre3", 
+	private String[] columns = new String[] { "Main Actor Popularity",  "Secondary Actor Popularity",
+			"Director Popularity",  "Genre1", "Genre2", "Genre3", 
 			"Country of Origin ", "Budget", "Result" };
 
 	public ManageMovieDataWindow(MainWindow mainWindow, MovieService movieService) {

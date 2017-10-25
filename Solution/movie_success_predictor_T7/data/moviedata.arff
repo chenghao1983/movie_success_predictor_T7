@@ -1,8 +1,8 @@
 @relation data
 
-@attribute MainActorName {"Amateur", "Star", "Super Star"}
-@attribute SecondActorName {"Amateur", "Star", "Super Star"}
-@attribute DirectorName {"Amateur", "Star", "Super Star"}
+@attribute MainActorPopularity {"Amateur", "Star", "Super Star"}
+@attribute SecondActorPopularity  {"Amateur", "Star", "Super Star"}
+@attribute DirectorPopularity  {"Amateur", "Star", "Super Star"}
 @attribute Genre1 {"Action", "Adventure", "Animation", "Comedy", "Drama", "Biography", "Crime", "Fantasy", "Horror", "Romance", "Mystery", "Family", "Documentary"}
 @attribute Genre2 {"Adventure", "Animation", "Family", "Crime", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Sci-Fi", "Romance", "History", "Musical", "Music", "Biography", "Thriller", "War", "Documentary"}
 @attribute Genre3 {"Fantasy", "Sci-Fi", "Romance", "Comedy", "Western", "Family", "Drama", "Thriller", "Horror", "Crime", "Animation", "History", "Mystery", "Sport", "War", "Biography", "Musical", "Music", "Documentary", "Film-Noir"}

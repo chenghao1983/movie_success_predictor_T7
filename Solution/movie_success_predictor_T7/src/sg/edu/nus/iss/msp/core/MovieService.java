@@ -40,30 +40,25 @@ public class MovieService {
 		}
 		// setting class attribute
 		instances.setClassIndex(instances.numAttributes() - 1);
-	
+
 	}
 
 	public boolean trainModel() {
 		// TODO Auto-generated method stub
-		
-		
-		
-		
+
 		return true;
 	}
-	
-	
-	public boolean predictMovieSuccess(Movie movie)	{
+
+	public boolean predictMovieSuccess(Movie movie) {
 		// TODO: add ML code here
-		
-		
-		
-		
+
 		return true;
 	}
-	
-	
+
 	public boolean AddMovie(Movie newMovie) {
+
+		String at = instances.attribute(0).toString();
+
 		Instance newInstance = new DenseInstance(9);
 		newInstance.setDataset(instances);
 		newInstance.setValue(instances.attribute(0), newMovie.getMainActorPopularity());
@@ -75,39 +70,28 @@ public class MovieService {
 		newInstance.setValue(instances.attribute(6), newMovie.getCountryOfOrigin());
 		newInstance.setValue(instances.attribute(7), newMovie.getBudget());
 		newInstance.setValue(instances.attribute(8), newMovie.getResult());
-		
-		instances.add(newInstance);
-	
-		System.out.println(instances);
-		
-		
-		/*
-		
-		BufferedWriter writer =null;
-		
-		try {
-			writer = new BufferedWriter(new FileWriter(getInputDataFilePath()));
-		} catch (IOException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
 
-		
-		
-		try {
-			writer.write(instances.toString());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	*/
-		
+		instances.add(newInstance);
+
+		System.out.println(instances);
+
+		/*
+		 * 
+		 * BufferedWriter writer =null;
+		 * 
+		 * try { writer = new BufferedWriter(new
+		 * FileWriter(getInputDataFilePath())); } catch (IOException e2) { //
+		 * TODO Auto-generated catch block e2.printStackTrace(); }
+		 * 
+		 * 
+		 * 
+		 * try { writer.write(instances.toString()); } catch (IOException e) {
+		 * // TODO Auto-generated catch block e.printStackTrace(); }
+		 * 
+		 */
+
 		return false;
 	}
-	
-	
-
 
 	public String getInputDataFilePath() throws IOException {
 		String currentDirectory = null;
@@ -121,7 +105,7 @@ public class MovieService {
 		}
 		return currentDirectory + "/data/" + Constants.DATA_FILE_NAME;
 	}
-	
+
 	public static String getImageFileLocation() throws IOException {
 		String currentDirectory = null;
 		currentDirectory = System.getProperty("user.dir");
@@ -134,7 +118,7 @@ public class MovieService {
 		}
 		return currentDirectory + "/src/img";
 	}
-	
+
 	public Movie[] getMovies() {
 		if (movies == null) {
 			loadData();
@@ -178,8 +162,5 @@ public class MovieService {
 			movies[i] = movie;
 		}
 	}
-
-	
-
 
 }
