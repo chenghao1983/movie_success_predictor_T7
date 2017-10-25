@@ -292,7 +292,7 @@ public class PredictMovieInputWindow extends JFrame {
 				newMovie.setBudget(budget);
 
 				int result = JOptionPane.showConfirmDialog(this,
-						"The prediction will be based on the last trained model. Please confirm to proceed.", "Confirm",
+						"The prediction will be based on the last trained model. Confirm to proceed ?", "Confirm",
 						0);
 
 				if (result == 1) {
