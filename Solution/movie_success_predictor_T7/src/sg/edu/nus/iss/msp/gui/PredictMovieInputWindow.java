@@ -37,11 +37,11 @@ public class PredictMovieInputWindow extends JFrame {
 	private JLabel lblMsg;
 
 	private String mainActorPopularity;
-	//private Double mainActorPopularity;
+	// private Double mainActorPopularity;
 	private String secondActorPopularity;
-	//private Double secondActorPopularity;
+	// private Double secondActorPopularity;
 	private String directorPopularity;
-	//private Double directorPopularity;
+	// private Double directorPopularity;
 	private String genre1;
 	private String genre2;
 	private String genre3;
@@ -178,7 +178,7 @@ public class PredictMovieInputWindow extends JFrame {
 				dispose();
 			}
 		});
-		
+
 		populateComboBox();
 	}
 
@@ -191,18 +191,17 @@ public class PredictMovieInputWindow extends JFrame {
 		ArrayList<String> listGenre2 = new ArrayList<String>();
 		ArrayList<String> listGenre3 = new ArrayList<String>();
 		ArrayList<String> listCountryOfOrigin = new ArrayList<String>();
-		
 
 		for (Movie movie : movies) {
-			//if (!listMainActorName.contains(movie.getMainActorName())) {
-			//	listMainActorName.add(movie.getMainActorName());
-			//}
-			//if (!listSecondActorName.contains(movie.getSecondActorName())) {
-			//	listSecondActorName.add(movie.getSecondActorName());
-			//}
-			//if (!listDirectorName.contains(movie.getDirectorName())) {
-			//	listDirectorName.add(movie.getDirectorName());
-			//}
+			// if (!listMainActorName.contains(movie.getMainActorName())) {
+			// listMainActorName.add(movie.getMainActorName());
+			// }
+			// if (!listSecondActorName.contains(movie.getSecondActorName())) {
+			// listSecondActorName.add(movie.getSecondActorName());
+			// }
+			// if (!listDirectorName.contains(movie.getDirectorName())) {
+			// listDirectorName.add(movie.getDirectorName());
+			// }
 			if (!listGenre1.contains(movie.getGenre1())) {
 				listGenre1.add(movie.getGenre1());
 			}
@@ -217,63 +216,67 @@ public class PredictMovieInputWindow extends JFrame {
 			}
 		}
 
-		//Collections.sort(listMainActorName);
-		//Collections.sort(listSecondActorName);
-		//Collections.sort(listDirectorName);
+		// Collections.sort(listMainActorName);
+		// Collections.sort(listSecondActorName);
+		// Collections.sort(listDirectorName);
 		Collections.sort(listGenre1);
 		Collections.sort(listGenre2);
 		Collections.sort(listGenre3);
 		Collections.sort(listCountryOfOrigin);
-		
-		//comboBox_MainActorName.addItem(new ComboItem("NA", "NA"));
+
+		// comboBox_MainActorName.addItem(new ComboItem("NA", "NA"));
 		comboBox_MainActorPopularity.addItem(new ComboItem("Amateur - Facebook like < 1000", "Amateur"));
 		comboBox_MainActorPopularity.addItem(new ComboItem("Star - Facebook like between 1000 and 5000", "Star"));
 		comboBox_MainActorPopularity.addItem(new ComboItem("Super Star - Facebook > 5000", "Super Star"));
-		
-		//for (String mainActorName : listMainActorName) {
-		//	comboBox_MainActorName.addItem(new ComboItem(mainActorName, mainActorName));
-		//}
 
-		//comboBox_SecondActorName.addItem(new ComboItem("NA", "NA"));		
+		// for (String mainActorName : listMainActorName) {
+		// comboBox_MainActorName.addItem(new ComboItem(mainActorName,
+		// mainActorName));
+		// }
+
+		// comboBox_SecondActorName.addItem(new ComboItem("NA", "NA"));
 		comboBox_SecondActorPopularity.addItem(new ComboItem("Amateur - Facebook like < 1000", "Amateur"));
 		comboBox_SecondActorPopularity.addItem(new ComboItem("Star - Facebook like between 1000 and 5000", "Star"));
 		comboBox_SecondActorPopularity.addItem(new ComboItem("Super Star - Facebook > 5000", "Super Star"));
-		
-		//for (String secondActorName : listSecondActorName) {
-		//	comboBox_SecondActorName.addItem(new ComboItem(secondActorName, secondActorName));
-		//}
 
-		//comboBox_DirectorName.addItem(new ComboItem("NA", "NA"));	
+		// for (String secondActorName : listSecondActorName) {
+		// comboBox_SecondActorName.addItem(new ComboItem(secondActorName,
+		// secondActorName));
+		// }
+
+		// comboBox_DirectorName.addItem(new ComboItem("NA", "NA"));
 		comboBox_DirectorPopularity.addItem(new ComboItem("Amateur - Facebook like < 100", "Amateur"));
 		comboBox_DirectorPopularity.addItem(new ComboItem("Star - Facebook like between 100 and 1000", "Star"));
 		comboBox_DirectorPopularity.addItem(new ComboItem("Super Star - Facebook > 1000", "Super Star"));
-		
-		//for (String directorName : listDirectorName) {
-		//	comboBox_DirectorName.addItem(new ComboItem(directorName, directorName));
-		//}
 
-		//comboBox_Genre1.addItem(new ComboItem("NA", "NA"));
+		// for (String directorName : listDirectorName) {
+		// comboBox_DirectorName.addItem(new ComboItem(directorName,
+		// directorName));
+		// }
+
+		// comboBox_Genre1.addItem(new ComboItem("NA", "NA"));
 		for (String genre1 : listGenre1) {
 			comboBox_Genre1.addItem(new ComboItem(genre1, genre1));
-		}		
-		
-		//comboBox_Genre2.addItem(new ComboItem("NA", "NA"));
+		}
+
+		// comboBox_Genre2.addItem(new ComboItem("NA", "NA"));
 		for (String genre2 : listGenre2) {
 			comboBox_Genre2.addItem(new ComboItem(genre2, genre2));
-		}			
+		}
 
-		//comboBox_Genre3.addItem(new ComboItem("NA", "NA"));
+		// comboBox_Genre3.addItem(new ComboItem("NA", "NA"));
 		for (String genre3 : listGenre3) {
 			comboBox_Genre3.addItem(new ComboItem(genre3, genre3));
-		}		
+		}
 
-		//comboBox_CountryOfOrigin.addItem(new ComboItem("NA", "NA"));
+		// comboBox_CountryOfOrigin.addItem(new ComboItem("NA", "NA"));
 		for (String countryOfOrigin : listCountryOfOrigin) {
 			comboBox_CountryOfOrigin.addItem(new ComboItem(countryOfOrigin, countryOfOrigin));
-		}	
+		}
 
 	}
 
+	@SuppressWarnings("unused")
 	private void predict() {
 		lblMsg.setText("");
 		if (validateForm()) {
@@ -287,6 +290,14 @@ public class PredictMovieInputWindow extends JFrame {
 				newMovie.setGenre2(genre3);
 				newMovie.setCountryOfOrigin(countryOfOrigin);
 				newMovie.setBudget(budget);
+
+				int result = JOptionPane.showConfirmDialog(this,
+						"The prediction will be based on the last trained model. Please confirm to proceed.", "Confirm",
+						0);
+
+				if (result == 1) {
+					return;
+				}
 
 				boolean movieSuccess = movieService.predictMovieSuccess(newMovie);
 
@@ -305,7 +316,8 @@ public class PredictMovieInputWindow extends JFrame {
 			return false;
 		}
 		try {
-			//mainActorPopularity = Double.parseDouble(txt_MainActorPopularity.getText());
+			// mainActorPopularity =
+			// Double.parseDouble(txt_MainActorPopularity.getText());
 		} catch (Exception ex) {
 			return false;
 		}
@@ -314,7 +326,8 @@ public class PredictMovieInputWindow extends JFrame {
 			return false;
 		}
 		try {
-			//secondActorPopularity = Double.parseDouble(txt_SecondActorPopularity.getText());
+			// secondActorPopularity =
+			// Double.parseDouble(txt_SecondActorPopularity.getText());
 		} catch (Exception ex) {
 			return false;
 		}
@@ -323,7 +336,8 @@ public class PredictMovieInputWindow extends JFrame {
 			return false;
 		}
 		try {
-			//directorPopularity = Double.parseDouble(txt_DirectorPopularity.getText());
+			// directorPopularity =
+			// Double.parseDouble(txt_DirectorPopularity.getText());
 		} catch (Exception ex) {
 			return false;
 		}
