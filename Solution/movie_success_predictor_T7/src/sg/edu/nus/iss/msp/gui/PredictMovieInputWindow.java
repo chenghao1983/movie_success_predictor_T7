@@ -287,7 +287,7 @@ public class PredictMovieInputWindow extends JFrame {
 				newMovie.setDirectorPopularity(directorPopularity);
 				newMovie.setGenre1(genre1);
 				newMovie.setGenre2(genre2);
-				newMovie.setGenre2(genre3);
+				newMovie.setGenre3(genre3);
 				newMovie.setCountryOfOrigin(countryOfOrigin);
 				newMovie.setBudget(budget);
 

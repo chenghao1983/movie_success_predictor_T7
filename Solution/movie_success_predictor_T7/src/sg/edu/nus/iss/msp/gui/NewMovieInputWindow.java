@@ -196,13 +196,23 @@ public class NewMovieInputWindow extends JFrame {
 			newMovie.setDirectorPopularity(DirectorPopularity);
 			newMovie.setGenre1(genre1);
 			newMovie.setGenre2(genre2);
-			newMovie.setGenre2(genre3);
+			newMovie.setGenre3(genre3);
 			newMovie.setCountryOfOrigin(countryOfOrigin);
 			newMovie.setBudget(budget);
 			newMovie.setResult(result);
 
 			boolean movieAdded = movieService.AddMovie(newMovie);
-		} else {
+
+			if (movieAdded) {
+				JOptionPane.showConfirmDialog(this, "New Movie has been added successfully !", "Success", JOptionPane.DEFAULT_OPTION);
+				this.dispose();
+				manageMovieDataWindow.initialize();
+			} else {
+				JOptionPane.showConfirmDialog(this, "Failed to add New Movie !", "Fail", JOptionPane.DEFAULT_OPTION);
+			}
+		}
+
+		else {
 			lblMsg.setText("Invalid input");
 		}
 	}
@@ -241,7 +251,7 @@ public class NewMovieInputWindow extends JFrame {
 		} catch (Exception ex) {
 			return false;
 		}
-		
+
 		result = ((ComboItem) comboBox_Result.getSelectedItem()).getValue();
 		return true;
 	}

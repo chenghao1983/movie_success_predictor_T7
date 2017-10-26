@@ -19,9 +19,12 @@ public class ManageMovieDataWindow extends JFrame {
 
 	private Movie[] movies;
 
-	private String[] columns = new String[] { "Main Actor Popularity",  "Secondary Actor Popularity",
-			"Director Popularity",  "Genre1", "Genre2", "Genre3", 
-			"Country of Origin ", "Budget", "Result" };
+	private String[] columns = new String[] { "Main Actor Popularity", "Secondary Actor Popularity",
+			"Director Popularity", "Genre1", "Genre2", "Genre3", "Country of Origin ", "Budget", "Result" };
+
+	JScrollPane scrollPane;
+	JTable table;
+	JLabel lblTotalMovie;
 
 	public ManageMovieDataWindow(MainWindow mainWindow, MovieService movieService) {
 		addWindowListener(new WindowAdapter() {
@@ -36,17 +39,21 @@ public class ManageMovieDataWindow extends JFrame {
 		});
 		this.movieService = movieService;
 		this.mainWindow = mainWindow;
-		this.movies = movieService.getMovies();
+		// this.movies = movieService.getMovies();
 		initialize();
 	}
 
-	private void initialize() {
+	public void initialize() {
+		this.movies = movieService.getMovies();
+
 		setSize(1000, 600);
 		setTitle("Movie List");
 
+		getContentPane().removeAll();
+		
 		getContentPane().setLayout(null);
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 960, 450);
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 960, 432);
 		getContentPane().add(scrollPane);
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(12, 481, 960, 66);
@@ -68,20 +75,34 @@ public class ManageMovieDataWindow extends JFrame {
 
 		});
 		buttonPanel.add(btnClose);
-		
+
 		JButton btnAddNewMovie = new JButton("Add New Movie");
 		btnAddNewMovie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				addNewMovie();
-				
+
 			}
 
-			
 		});
 		btnAddNewMovie.setBounds(269, 4, 160, 55);
 		buttonPanel.add(btnAddNewMovie);
 
+		lblTotalMovie = new JLabel("");
+		lblTotalMovie.setBounds(10, 454, 267, 14);
+		getContentPane().add(lblTotalMovie);
+
+		populateMovieData();
+
+	}
+
+	public void populateMovieData() {
+		table = new JTable();
+		table.setFillsViewportHeight(true);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(table);
+
+		lblTotalMovie.setText("Total Number of Movies: " + movies.length);
 		// jTable Data Display
 		Object[][] data = new Object[movies.length][];
 
@@ -94,36 +115,36 @@ public class ManageMovieDataWindow extends JFrame {
 			values[4] = movies[i].getGenre2();
 			values[5] = movies[i].getGenre3();
 			values[6] = movies[i].getCountryOfOrigin();
-			values[7] = String.format("%1$,.0f", movies[i].getBudget()); 
+			values[7] = String.format("%1$,.0f", movies[i].getBudget());
 			values[8] = movies[i].getResult();
-					
+
 			data[i] = values;
 		}
 
 		DefaultTableModel model = new DefaultTableModel(data, columns) {
 
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = -1229371328085071411L;
+
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
-			
+
 		};
 		model.isCellEditable(0, 0);
-
-		JTable table = new JTable(model);
-		table.setFillsViewportHeight(true);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(table);
+		table.setModel(model);
 
 	}
-	
-	
+
 	private void addNewMovie() {
-		if (getNewMovieInputWindow() == null) {
+		if (newMovieInputWindow == null) {
 			setNewMovieInputWindow(new NewMovieInputWindow(this, movieService));
 			getNewMovieInputWindow().setVisible(true);
 			getNewMovieInputWindow().setLocation(getLocation());
 		}
-		
+
 	}
 
 	public NewMovieInputWindow getNewMovieInputWindow() {
@@ -133,6 +154,4 @@ public class ManageMovieDataWindow extends JFrame {
 	public void setNewMovieInputWindow(NewMovieInputWindow newMovieInputWindow) {
 		this.newMovieInputWindow = newMovieInputWindow;
 	}
-	
-	
 }
