@@ -154,7 +154,7 @@ public class DecisionTreeService {
 	 * @see Exception
 	 */
 
-	public int predict(Movie m, String fileName) {
+	public String predict(Movie m, String fileName) {
 		learntModel = this.loadExistingModel(fileName);
 		DataSource source;
 		try {
@@ -186,12 +186,12 @@ public class DecisionTreeService {
 			//testInstance.setValue(trainingData.attribute(8), "Success");
 
 			int result = (int) learntModel.classifyInstance(testInstance);
-
-			return result;
+			String readableResult = trainingData.attribute(8).value(result);
+			return readableResult;
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
-		return -1;
+		return "";
 
 	}
 

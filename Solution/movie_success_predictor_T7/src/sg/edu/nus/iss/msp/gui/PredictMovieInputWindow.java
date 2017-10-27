@@ -299,7 +299,7 @@ public class PredictMovieInputWindow extends JFrame {
 					return;
 				}
 
-				boolean movieSuccess = movieService.predictMovieSuccess(newMovie);
+				String predictionResult = movieService.predictMovieSuccess(newMovie);
 
 				predictMovieResultWindow = new PredictMovieResultWindow(this, movieService);
 				predictMovieResultWindow.setVisible(true);

@@ -20,7 +20,8 @@ public class MovieService {
 	private Instances instances = null;
 	private Movie[] movies = null;
 	private DecisionTreeService decisionTreeService = new DecisionTreeService();
-
+	private String predictionResult = "";
+	
 	public void loadData() {
 		BufferedReader reader = null;
 		FileReader fileReader = null;
@@ -62,10 +63,10 @@ public class MovieService {
 		return true;
 	}
 
-	public boolean predictMovieSuccess(Movie movie) {
+	public String predictMovieSuccess(Movie movie) {
 		// TODO: add ML code here
-		int result = decisionTreeService.predict(movie, Constants.DATA_FILE_PATH);
-		return true;
+		predictionResult = decisionTreeService.predict(movie, Constants.DATA_FILE_PATH);
+		return predictionResult;
 	}
 
 	public boolean AddMovie(Movie newMovie) {
@@ -252,6 +253,10 @@ public class MovieService {
 
 	public void setMovies(Movie[] movies) {
 		this.movies = movies;
+	}
+	
+	public String getPredictionResult() {
+		return predictionResult;
 	}
 
 	private Instances getInstances() {

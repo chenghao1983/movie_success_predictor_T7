@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.msp.gui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -11,12 +12,14 @@ public class PredictMovieResultWindow extends JFrame {
 	private PredictMovieInputWindow predictMovieInputWindow;
 	private MovieService movieService;
 	private Movie[] movies;
+	private String predictionResult;
+	private JLabel lblMsg;
 
 	public PredictMovieResultWindow(PredictMovieInputWindow predictMovieInputWindow, MovieService movieService) {
 		this.predictMovieInputWindow = predictMovieInputWindow;
 		this.movieService = movieService;
 		this.movies = movieService.getMovies();
-
+		this.predictionResult = movieService.getPredictionResult();
 		initialize();
 
 	}
@@ -49,6 +52,12 @@ public class PredictMovieResultWindow extends JFrame {
 
 		
 		// TODO
+		lblMsg = new JLabel("");
+		lblMsg.setText(this.predictionResult);
+		lblMsg.setForeground(Color.RED);
+		lblMsg.setBounds(191, 449, 388, 14);
+		lblMsg.setVisible(true);
+		scrollPane.add(lblMsg);
 
 	}
 }
