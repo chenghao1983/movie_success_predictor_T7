@@ -204,9 +204,11 @@ public class NewMovieInputWindow extends JFrame {
 			boolean movieAdded = movieService.AddMovie(newMovie);
 
 			if (movieAdded) {
-				JOptionPane.showConfirmDialog(this, "New Movie has been added successfully !", "Success", JOptionPane.DEFAULT_OPTION);
-				this.dispose();
+				JOptionPane.showConfirmDialog(this, "New Movie has been added successfully !", "Success",
+						JOptionPane.DEFAULT_OPTION);
 				manageMovieDataWindow.initialize();
+				manageMovieDataWindow.setNewMovieInputWindow(null);
+				this.dispose();
 			} else {
 				JOptionPane.showConfirmDialog(this, "Failed to add New Movie !", "Fail", JOptionPane.DEFAULT_OPTION);
 			}
