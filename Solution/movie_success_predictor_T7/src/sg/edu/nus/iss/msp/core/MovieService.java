@@ -64,7 +64,7 @@ public class MovieService {
 
 	public boolean predictMovieSuccess(Movie movie) {
 		// TODO: add ML code here
-		int result = decisionTreeService.predict(movie, Constants.MODEL_FILE_PATH);
+		int result = decisionTreeService.predict(movie, Constants.DATA_FILE_PATH);
 		return true;
 	}
 

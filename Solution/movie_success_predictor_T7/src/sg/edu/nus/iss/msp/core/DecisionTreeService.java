@@ -137,7 +137,7 @@ public class DecisionTreeService {
 			source = new DataSource(fileName);
 			Instances trainingData = source.getDataSet();
 
-			Instance testInstance = new DenseInstance(9);
+			Instance testInstance = new DenseInstance(8);
 			testInstance.setDataset(trainingData);
 			testInstance.setValue(trainingData.attribute(0), m.getMainActorPopularity());
 			testInstance.setValue(trainingData.attribute(1), m.getSecondActorPopularity());
@@ -147,7 +147,7 @@ public class DecisionTreeService {
 			testInstance.setValue(trainingData.attribute(5), m.getGenre3());
 			testInstance.setValue(trainingData.attribute(6), m.getCountryOfOrigin());
 			testInstance.setValue(trainingData.attribute(7), m.getBudget());
-			testInstance.setValue(trainingData.attribute(8), m.getResult());
+			//testInstance.setValue(trainingData.attribute(8), "Success");
 
 			int result = (int) learntModel.classifyInstance(testInstance);
 

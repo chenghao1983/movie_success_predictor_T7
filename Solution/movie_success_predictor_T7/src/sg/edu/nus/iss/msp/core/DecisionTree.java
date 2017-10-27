@@ -24,7 +24,7 @@ public class DecisionTree {
 		Instance testInstance = decisionTree.prepareTestInstance();
 		int result = (int) tree.classifyInstance(testInstance);
 
-		String readableResult = decisionTree.trainingData.attribute(12).value(result);
+		String readableResult = decisionTree.trainingData.attribute(8).value(result);
 		System.out.println(" ----------------------------------------- ");
 		System.out.println("Test data               : " + testInstance);
 		System.out.println("Test data classification: " + readableResult);
@@ -71,7 +71,7 @@ public class DecisionTree {
 	}
 
 	private Instance prepareTestInstance() {
-		Instance instance = new DenseInstance(13);
+		Instance instance = new DenseInstance(9);
 		instance.setDataset(trainingData);
 
 //		instance.setValue(trainingData.attribute(0), "Johnny Depp");
@@ -92,21 +92,18 @@ public class DecisionTree {
 		
 		//instance.setValue(trainingData.attribute(12), 563);
 		
-		instance.setValue(trainingData.attribute(0), "CCH Pounder");
-		instance.setValue(trainingData.attribute(1), 1000);
-		instance.setValue(trainingData.attribute(2), "Joel David Moore");
+		instance.setValue(trainingData.attribute(0), "Amateur");
+		instance.setValue(trainingData.attribute(1), "Amateur");
+		instance.setValue(trainingData.attribute(2), "Amateur");
 		
-		instance.setValue(trainingData.attribute(3), 936);
-		instance.setValue(trainingData.attribute(4), "James Cameron");
-		instance.setValue(trainingData.attribute(5), 0);
+		instance.setValue(trainingData.attribute(3), "Action");
+		instance.setValue(trainingData.attribute(4), "Adventure");
+		instance.setValue(trainingData.attribute(5), "Animation");
 		
-		instance.setValue(trainingData.attribute(6), "Action");
-		instance.setValue(trainingData.attribute(7), "Adventure");
-		instance.setValue(trainingData.attribute(8), "Fantasy");
+		instance.setValue(trainingData.attribute(6), "Argentina");
+		instance.setValue(trainingData.attribute(7), 1000);
 		
-		instance.setValue(trainingData.attribute(9), "USA");
-		instance.setValue(trainingData.attribute(10), 760505847);
-		instance.setValue(trainingData.attribute(11), 237000000);
+		//Amateur,Amateur,Amateur,Action,Adventure,Animation,Argentina,1000
 		
 		//instance.setValue(trainingData.attribute(12), 563);
 
