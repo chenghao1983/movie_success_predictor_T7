@@ -1,6 +1,7 @@
 package sg.edu.nus.iss.msp.core;
 
 import weka.core.converters.ConverterUtils.DataSource;
+import weka.filters.supervised.instance.*;
 import weka.core.*;
 import weka.classifiers.trees.J48;
 import java.io.*;
@@ -20,6 +21,36 @@ public class DecisionTreeService {
 //		DecisionTreeService decisionTree = new DecisionTreeService();
 //		System.out.println(decisionTree.loadExistingModel("data/moviedata.arff").toString());
 //	}
+
+
+	/**
+	 * This function is to filter Data Instances based on Supervised Learning Method - Resampling
+	 * Currently Resample the whole data set
+	 * 	 
+	 * BiasToUniformClass = 0.0
+	 * NoReplacement = False
+	 * 
+	 * @param dataInstances Instances 
+	 * @return filteredInstances Result based on Resampling instances
+	 * @exception Exception
+	 * @see Exception
+	 */
+	public Instances resampleDataSet(Instances dataInstances)
+	{
+		final Resample filter = new Resample();
+		Instances filteredInstances = null;
+		filter.setBiasToUniformClass(0.0);
+		try {
+			filter.setInputFormat(dataInstances);
+			filter.setNoReplacement(false);
+			filter.setSampleSizePercent(100);
+			filteredInstances = weka.filters.Filter.useFilter(dataInstances, filter);
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE,"" , "Error when resampling input data!");
+			LOGGER.log(Level.SEVERE, e.toString(), e);
+		}
+		return filteredInstances;
+	}
 
 	/**
 	 * This is to train the Decision Tree with the filename provided. Once the
@@ -45,7 +76,7 @@ public class DecisionTreeService {
 			// Learn the Decision Tree
 			train.setClassIndex(train.numAttributes() - 1);
 			learntModel.setOptions(options);
-			learntModel.buildClassifier(train);
+			learntModel.buildClassifier(this.resampleDataSet(train));
 
 			// Save the Model in moviedata.model file
 			SerializationHelper.write(Constants.MODEL_FILE_PATH, learntModel);
