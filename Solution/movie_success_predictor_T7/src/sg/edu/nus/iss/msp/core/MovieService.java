@@ -11,12 +11,15 @@ import weka.core.Instances;
 import weka.core.converters.ArffSaver;
 import sg.edu.nus.iss.msp.constant.Constants;
 import sg.edu.nus.iss.msp.model.Movie;
+import sg.edu.nus.iss.msp.core.*;
+import sg.edu.nus.iss.msp.gui.MainWindow;
 
 @SuppressWarnings("unused")
 public class MovieService {
 
 	private Instances instances = null;
 	private Movie[] movies = null;
+	private DecisionTreeService decisionTreeService = new DecisionTreeService();
 
 	public void loadData() {
 		BufferedReader reader = null;
@@ -55,13 +58,13 @@ public class MovieService {
 
 	public boolean trainModel() {
 		// TODO Auto-generated method stub
-
+		decisionTreeService.trainTree(Constants.DATA_FILE_PATH);
 		return true;
 	}
 
 	public boolean predictMovieSuccess(Movie movie) {
 		// TODO: add ML code here
-
+		int result = decisionTreeService.predict(movie, Constants.MODEL_FILE_PATH);
 		return true;
 	}
 
