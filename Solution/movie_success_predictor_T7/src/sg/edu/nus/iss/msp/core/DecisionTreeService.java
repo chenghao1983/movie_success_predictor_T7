@@ -17,9 +17,33 @@ public class DecisionTreeService {
 	
 
 //	public static void main(String[] args) throws Exception {
-//
+//		//"Super Star", "Star", "Star", "Action", "Adventure", "Fantasy", "USA", 300000000, "Fail"
+//		//"Star", "Amateur", "Super Star", "Action", "Adventure", "Fantasy", "USA", 237000000, "Success"
 //		DecisionTreeService decisionTree = new DecisionTreeService();
-//		System.out.println(decisionTree.loadExistingModel("data/moviedata.arff").toString());
+//		System.out.println(decisionTree.trainTree("data/moviedata.arff").toString());
+//		
+//		Movie m = new Movie();
+//		m.setBudget(237000000.00);
+//		m.setGenre1("Action");
+//		m.setCountryOfOrigin("USA");
+//		m.setGenre2("Adventure");
+//		m.setGenre3("Fantasy");
+//		
+//		m.setMainActorPopularity("Star");
+//		m.setSecondActorPopularity("Amateur");
+//		m.setDirectorPopularity("Super Star");
+////		m.setBudget(300000000.00);
+////		m.setGenre1("Action");
+////		m.setCountryOfOrigin("USA");
+////		m.setGenre2("Adventure");
+////		m.setGenre3("Fantasy");
+////		
+////		m.setMainActorPopularity("Super Star");
+////		m.setSecondActorPopularity("Star");
+////		m.setDirectorPopularity("Star");
+//
+//		
+//		System.out.println(decisionTree.predict(m, "data/moviedata.arff"));
 //	}
 
 
@@ -136,6 +160,7 @@ public class DecisionTreeService {
 		try {
 			source = new DataSource(fileName);
 			Instances trainingData = source.getDataSet();
+			trainingData.setClassIndex(trainingData.numAttributes() - 1);
 
 			Instance testInstance = new DenseInstance(8);
 			testInstance.setDataset(trainingData);
@@ -147,6 +172,17 @@ public class DecisionTreeService {
 			testInstance.setValue(trainingData.attribute(5), m.getGenre3());
 			testInstance.setValue(trainingData.attribute(6), m.getCountryOfOrigin());
 			testInstance.setValue(trainingData.attribute(7), m.getBudget());
+			
+//			testInstance.setValue(trainingData.attribute(0), "Amateur");
+//			testInstance.setValue(trainingData.attribute(1), "Amateur");
+//			testInstance.setValue(trainingData.attribute(2), "Amateur");
+//			
+//			testInstance.setValue(trainingData.attribute(3), "Action");
+//			testInstance.setValue(trainingData.attribute(4), "Adventure");
+//			testInstance.setValue(trainingData.attribute(5), "Animation");
+//			
+//			testInstance.setValue(trainingData.attribute(6), "Argentina");
+//			testInstance.setValue(trainingData.attribute(7), 1000);
 			//testInstance.setValue(trainingData.attribute(8), "Success");
 
 			int result = (int) learntModel.classifyInstance(testInstance);
