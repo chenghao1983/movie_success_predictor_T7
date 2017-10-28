@@ -5,4 +5,4 @@ for %%i in ("%~dp0..") do set "folder=%%~fi"
 echo %folder%
 cd..
 
-"%PATH%\java" -classpath %folder%\classes sg.edu.nus.iss.msp.main.MSPApp
+"%PATH%\java" -verbose -classpath  %folder%\classes;%folder%\src\weka.jar sg.edu.nus.iss.msp.main.MSPApp 

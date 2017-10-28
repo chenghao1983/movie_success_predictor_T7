@@ -1,2 +1,2 @@
-set JAVA_HOME=path\to\your\jdk\folder
+set JAVA_HOME=C:\Program Files\Java\jdk1.8.0_131\
 set PATH=%JAVA_HOME%\bin

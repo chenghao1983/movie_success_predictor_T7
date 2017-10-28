@@ -11,7 +11,7 @@ import weka.core.*;
 
 public class DecisionTree {
 	private Instances trainingData;
-
+/*
 	public static void main(String[] args) throws Exception {
 
 		DecisionTree decisionTree = new DecisionTree("data/moviedata.arff");
@@ -29,7 +29,7 @@ public class DecisionTree {
 		System.out.println("Test data               : " + testInstance);
 		System.out.println("Test data classification: " + readableResult);
 	}
-
+*/
 	public DecisionTree(String fileName) {
 		BufferedReader reader = null;
 		try {
