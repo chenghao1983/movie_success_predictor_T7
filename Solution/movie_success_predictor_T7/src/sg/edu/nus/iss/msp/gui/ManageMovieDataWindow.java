@@ -62,7 +62,7 @@ public class ManageMovieDataWindow extends JFrame {
 		buttonPanel.setLayout(null);
 
 		JButton btnClose = new JButton("Close");
-		btnClose.setBounds(560, 4, 160, 55);
+		btnClose.setBounds(649, 4, 160, 55);
 		btnClose.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -85,8 +85,47 @@ public class ManageMovieDataWindow extends JFrame {
 			}
 
 		});
-		btnAddNewMovie.setBounds(269, 4, 160, 55);
+		btnAddNewMovie.setBounds(194, 4, 160, 55);
 		buttonPanel.add(btnAddNewMovie);
+		
+		JButton btnDelete = new JButton("Delete Movie");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				// TODO
+				
+				int selectedRow = table.getSelectedRow();
+				
+				if(selectedRow == -1)
+				{
+					JOptionPane.showConfirmDialog(getContentPane(), "Please select a movie", "warning", JOptionPane.DEFAULT_OPTION);
+					return;
+				}
+				else
+				{
+					int result = JOptionPane.showConfirmDialog(getContentPane(),
+							"Confirm to delete the selected movie ?", "Confirm",
+							0);
+					if (result == 1) {
+						return;
+					}
+					
+				
+					boolean movieAdded = movieService.DeleteMovie(selectedRow);
+
+					if (movieAdded) {
+						JOptionPane.showConfirmDialog(getContentPane(), "Movie has been deleted successfully !", "Success",
+								JOptionPane.DEFAULT_OPTION);
+						initialize();
+					} else {
+						JOptionPane.showConfirmDialog(getContentPane(), "Failed to delete Movie !", "Fail", JOptionPane.DEFAULT_OPTION);
+					}
+					
+				}
+			}
+		});
+		btnDelete.setBounds(416, 4, 160, 55);
+		buttonPanel.add(btnDelete);
 
 		lblTotalMovie = new JLabel("");
 		lblTotalMovie.setBounds(10, 454, 267, 14);

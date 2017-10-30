@@ -300,10 +300,18 @@ public class PredictMovieInputWindow extends JFrame {
 				}
 
 				String predictionResult = movieService.predictMovieSuccess(newMovie);
+				
+				
+				
+				JOptionPane.showConfirmDialog(this,
+						movieService.getPredictionResult(), "The prediction result is " + movieService.getPredictionResult(),
+						JOptionPane.DEFAULT_OPTION);
+				
 
-				predictMovieResultWindow = new PredictMovieResultWindow(this, movieService);
-				predictMovieResultWindow.setVisible(true);
-				predictMovieResultWindow.setLocation(getLocation());
+				//predictMovieResultWindow = new PredictMovieResultWindow(this, movieService);
+				
+				//predictMovieResultWindow.setVisible(true);
+				//predictMovieResultWindow.setLocation(getLocation());
 			}
 		} else {
 			lblMsg.setText("Invalid input");

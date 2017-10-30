@@ -216,6 +216,33 @@ public class MovieService {
 			index++;
 		}
 	}
+	
+	public boolean DeleteMovie(int index) {
+		boolean success =true;
+		
+		
+		instances.remove(index);
+		
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(getInputDataFilePath());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			success = false;
+		}
+
+		try {
+			fileWriter.write(instances.toString());
+			fileWriter.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+			success = false;
+		}
+		
+		return success;
+	}
 
 	public String getInputDataFilePath() throws IOException {
 		String currentDirectory = null;

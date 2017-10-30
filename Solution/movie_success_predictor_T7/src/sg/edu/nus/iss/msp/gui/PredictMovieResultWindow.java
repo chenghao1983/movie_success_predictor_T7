@@ -30,7 +30,7 @@ public class PredictMovieResultWindow extends JFrame {
 
 		getContentPane().setLayout(null);
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 960, 450);
+		scrollPane.setBounds(10, 11, 764, 450);
 		getContentPane().add(scrollPane);
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(12, 481, 960, 66);
@@ -57,7 +57,7 @@ public class PredictMovieResultWindow extends JFrame {
 		lblMsg.setForeground(Color.RED);
 		lblMsg.setBounds(191, 449, 388, 14);
 		lblMsg.setVisible(true);
-		scrollPane.add(lblMsg);
+		scrollPane.setRowHeaderView(lblMsg);
 
 	}
 }
