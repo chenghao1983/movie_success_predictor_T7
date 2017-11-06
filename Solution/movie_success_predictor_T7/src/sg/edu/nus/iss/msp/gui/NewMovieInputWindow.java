@@ -25,9 +25,9 @@ public class NewMovieInputWindow extends JFrame {
 	private MovieService movieService;
 	private Movie[] movies;
 	private JButton btnSave;
-	private JTextField txt_MainActorPopularity;
-	private JTextField txt_SecondActorPopularity;
-	private JTextField txt_DirectorPopularity;
+	private JComboBox<ComboItem> comboBox_MainActorPopularity;
+	private JComboBox<ComboItem> comboBox_SecondActorPopularity;
+	private JComboBox<ComboItem> comboBox_DirectorPopularity;
 	private JTextField txt_Genre1;
 	private JTextField txt_Genre2;
 	private JTextField txt_Genre3;
@@ -73,25 +73,25 @@ public class NewMovieInputWindow extends JFrame {
 		lblNewLabel.setBounds(162, 21, 147, 14);
 		intpuPane.add(lblNewLabel);
 
-		txt_MainActorPopularity = new JTextField();
-		txt_MainActorPopularity.setBounds(331, 18, 291, 20);
-		intpuPane.add(txt_MainActorPopularity);
+		comboBox_MainActorPopularity = new JComboBox<ComboItem>();
+		comboBox_MainActorPopularity.setBounds(331, 18, 291, 20);
+		intpuPane.add(comboBox_MainActorPopularity);
 
 		JLabel lblSecondActorPopularity = new JLabel("Second Actor Popularity");
 		lblSecondActorPopularity.setBounds(162, 63, 147, 14);
 		intpuPane.add(lblSecondActorPopularity);
 
-		txt_SecondActorPopularity = new JTextField();
-		txt_SecondActorPopularity.setBounds(331, 60, 291, 20);
-		intpuPane.add(txt_SecondActorPopularity);
+		comboBox_SecondActorPopularity = new JComboBox<ComboItem>();
+		comboBox_SecondActorPopularity.setBounds(331, 60, 291, 20);
+		intpuPane.add(comboBox_SecondActorPopularity);
 
 		JLabel lblDirectorPopularity = new JLabel("Director Popularity");
 		lblDirectorPopularity.setBounds(162, 110, 147, 14);
 		intpuPane.add(lblDirectorPopularity);
 
-		txt_DirectorPopularity = new JTextField();
-		txt_DirectorPopularity.setBounds(331, 107, 291, 20);
-		intpuPane.add(txt_DirectorPopularity);
+		comboBox_DirectorPopularity = new JComboBox<ComboItem>();
+		comboBox_DirectorPopularity.setBounds(331, 107, 291, 20);
+		intpuPane.add(comboBox_DirectorPopularity);
 
 		JLabel lblGenre1 = new JLabel("Genre 1");
 		lblGenre1.setBounds(162, 161, 137, 14);
@@ -184,6 +184,24 @@ public class NewMovieInputWindow extends JFrame {
 			}
 		});
 
+		populateComboBox();
+
+	}
+
+	private void populateComboBox() {
+
+		comboBox_MainActorPopularity.addItem(new ComboItem("Amateur - Facebook like < 1000", "Amateur"));
+		comboBox_MainActorPopularity.addItem(new ComboItem("Star - Facebook like between 1000 and 5000", "Star"));
+		comboBox_MainActorPopularity.addItem(new ComboItem("Super Star - Facebook > 5000", "Super Star"));
+
+		comboBox_SecondActorPopularity.addItem(new ComboItem("Amateur - Facebook like < 1000", "Amateur"));
+		comboBox_SecondActorPopularity.addItem(new ComboItem("Star - Facebook like between 1000 and 5000", "Star"));
+		comboBox_SecondActorPopularity.addItem(new ComboItem("Super Star - Facebook > 5000", "Super Star"));
+
+		comboBox_DirectorPopularity.addItem(new ComboItem("Amateur - Facebook like < 100", "Amateur"));
+		comboBox_DirectorPopularity.addItem(new ComboItem("Star - Facebook like between 100 and 1000", "Star"));
+		comboBox_DirectorPopularity.addItem(new ComboItem("Super Star - Facebook > 1000", "Super Star"));
+
 	}
 
 	private void save() {
@@ -220,15 +238,15 @@ public class NewMovieInputWindow extends JFrame {
 	}
 
 	private Boolean validateForm() {
-		MainActorPopularity = txt_MainActorPopularity.getText().trim();
+		MainActorPopularity = ((ComboItem) comboBox_MainActorPopularity.getSelectedItem()).getValue().trim();
 		if (MainActorPopularity.length() == 0) {
 			return false;
 		}
-		SecondActorPopularity = txt_SecondActorPopularity.getText().trim();
+		SecondActorPopularity = ((ComboItem) comboBox_SecondActorPopularity.getSelectedItem()).getValue().trim();
 		if (SecondActorPopularity.length() == 0) {
 			return false;
 		}
-		DirectorPopularity = txt_DirectorPopularity.getText().trim();
+		DirectorPopularity = ((ComboItem) comboBox_DirectorPopularity.getSelectedItem()).getValue().trim();
 		if (DirectorPopularity.length() == 0) {
 			return false;
 		}
