@@ -292,26 +292,29 @@ public class PredictMovieInputWindow extends JFrame {
 				newMovie.setBudget(budget);
 
 				int result = JOptionPane.showConfirmDialog(this,
-						"The prediction will be based on the last trained model. Confirm to proceed ?", "Confirm",
-						0);
+						"The prediction will be based on the last trained model. Confirm to proceed ?", "Confirm", 0);
 
 				if (result == 1) {
 					return;
 				}
 
 				String predictionResult = movieService.predictMovieSuccess(newMovie);
-				
-				
-				
-				JOptionPane.showConfirmDialog(this,
-						movieService.getPredictionResult(), "The prediction result is " + predictionResult,
-						JOptionPane.DEFAULT_OPTION);
-				
 
-				//predictMovieResultWindow = new PredictMovieResultWindow(this, movieService);
-				
-				//predictMovieResultWindow.setVisible(true);
-				//predictMovieResultWindow.setLocation(getLocation());
+				String resultMsg = "Unable to predict the movie due to error in data.";
+				if (predictionResult.contains("Success")) {
+					resultMsg = "Good News ! The movie is likely to be SUCCESS !";
+				} else if (predictionResult.contains("Fail")) {
+					resultMsg = "Unfortunately, the movie is likely to FAIL.";
+				}
+
+				JOptionPane.showConfirmDialog(this,  resultMsg,"Prediction Result",
+						JOptionPane.DEFAULT_OPTION);
+
+				// predictMovieResultWindow = new PredictMovieResultWindow(this,
+				// movieService);
+
+				// predictMovieResultWindow.setVisible(true);
+				// predictMovieResultWindow.setLocation(getLocation());
 			}
 		} else {
 			lblMsg.setText("Invalid input");
