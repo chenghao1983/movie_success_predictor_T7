@@ -304,7 +304,7 @@ public class PredictMovieInputWindow extends JFrame {
 				
 				
 				JOptionPane.showConfirmDialog(this,
-						movieService.getPredictionResult(), "The prediction result is " + movieService.getPredictionResult(),
+						movieService.getPredictionResult(), "The prediction result is " + predictionResult,
 						JOptionPane.DEFAULT_OPTION);
 				
 
