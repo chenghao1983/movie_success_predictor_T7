@@ -95,15 +95,14 @@ public class DecisionTreeService {
 			train.setClassIndex(train.numAttributes() - 1);
 			learntModel.setOptions(options);
 			learntModel.buildClassifier(this.resampleDataSet(train));
-
-			// Save the Model in moviedata.model file
-			 Evaluation eval=new Evaluation(train);
+			
+			Evaluation eval=new Evaluation(this.resampleDataSet(train));
 
              //first supply the classifier
              //then the training data
              //number of folds
              //random seed
-             eval.crossValidateModel(learntModel, train, 10, new Random(1));
+             eval.crossValidateModel(learntModel, this.resampleDataSet(train), 10, new Random(1));
              System.out.println("Percent correct: "+
                                 Double.toString(eval.pctCorrect()));
 
