@@ -21,7 +21,7 @@ public class MovieService {
 	private Movie[] movies = null;
 	private DecisionTreeService decisionTreeService = new DecisionTreeService();
 	private String predictionResult = "";
-	
+
 	public void loadData() {
 		BufferedReader reader = null;
 		FileReader fileReader = null;
@@ -63,10 +63,15 @@ public class MovieService {
 		return true;
 	}
 
-	public String predictMovieSuccess(Movie movie) {
+	public Object[] predictMovieSuccess(Movie movie) {
 		// TODO: add ML code here
-		predictionResult = decisionTreeService.predict(movie, Constants.DATA_FILE_PATH);
-		return predictionResult;
+		Object[] predictResults = new Object[2];
+		Object[] outPutResult = new Object[3];
+		predictResults = decisionTreeService.predict(movie, Constants.DATA_FILE_PATH);
+		outPutResult[0] = predictResults[0];
+		outPutResult[1] = predictResults[1];
+		outPutResult[2] = decisionTreeService.crossValidation(Constants.DATA_FILE_PATH);
+		return outPutResult;
 	}
 
 	public boolean AddMovie(Movie newMovie) {
@@ -137,7 +142,7 @@ public class MovieService {
 
 		instances.add(newInstance);
 
-		//System.out.println(instances);
+		// System.out.println(instances);
 
 		/*
 		 * 
@@ -170,20 +175,14 @@ public class MovieService {
 			e1.printStackTrace();
 			success = false;
 		}
-		
+
 		/*
-		ArffSaver saver = new ArffSaver();
-		saver.setInstances(instances);
-		try {
-			saver.setFile(new File(getInputDataFilePath()));
-			saver.setDestination(new File(getInputDataFilePath()));
-			saver.writeBatch();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			success = false;
-		}
-		*/
+		 * ArffSaver saver = new ArffSaver(); saver.setInstances(instances); try
+		 * { saver.setFile(new File(getInputDataFilePath()));
+		 * saver.setDestination(new File(getInputDataFilePath()));
+		 * saver.writeBatch(); } catch (IOException e) { // TODO Auto-generated
+		 * catch block e.printStackTrace(); success = false; }
+		 */
 
 		return success;
 	}
@@ -216,13 +215,12 @@ public class MovieService {
 			index++;
 		}
 	}
-	
+
 	public boolean DeleteMovie(int index) {
-		boolean success =true;
-		
-		
+		boolean success = true;
+
 		instances.remove(index);
-		
+
 		FileWriter fileWriter = null;
 		try {
 			fileWriter = new FileWriter(getInputDataFilePath());
@@ -240,7 +238,7 @@ public class MovieService {
 			e1.printStackTrace();
 			success = false;
 		}
-		
+
 		return success;
 	}
 
@@ -281,7 +279,7 @@ public class MovieService {
 	public void setMovies(Movie[] movies) {
 		this.movies = movies;
 	}
-	
+
 	public String getPredictionResult() {
 		return predictionResult;
 	}

@@ -7,19 +7,24 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import sg.edu.nus.iss.msp.core.MovieService;
 import sg.edu.nus.iss.msp.model.Movie;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class PredictMovieResultWindow extends JFrame {
 	private PredictMovieInputWindow predictMovieInputWindow;
 	private MovieService movieService;
 	private Movie[] movies;
 	private String predictionResult;
-	private JLabel lblMsg;
+	private String outPutMsg;
 
-	public PredictMovieResultWindow(PredictMovieInputWindow predictMovieInputWindow, MovieService movieService) {
+	public PredictMovieResultWindow(PredictMovieInputWindow predictMovieInputWindow, MovieService movieService,
+			String outPutMsg) {
+
 		this.predictMovieInputWindow = predictMovieInputWindow;
 		this.movieService = movieService;
 		this.movies = movieService.getMovies();
 		this.predictionResult = movieService.getPredictionResult();
+		this.outPutMsg = outPutMsg;
 		initialize();
 
 	}
@@ -29,9 +34,16 @@ public class PredictMovieResultWindow extends JFrame {
 		setTitle("Result");
 
 		getContentPane().setLayout(null);
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 764, 450);
+
+		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setBounds(10, 11, 764, 459);
+		textArea.setText(outPutMsg);
+
+		JScrollPane scrollPane = new JScrollPane(textArea);
+		scrollPane.setBounds(10, 11, 764, 459);
 		getContentPane().add(scrollPane);
+
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(12, 481, 960, 66);
 		getContentPane().add(buttonPanel);
@@ -50,14 +62,13 @@ public class PredictMovieResultWindow extends JFrame {
 		});
 		buttonPanel.add(btnClose);
 
-		
-		// TODO
-		lblMsg = new JLabel("");
-		lblMsg.setText(this.predictionResult);
-		lblMsg.setForeground(Color.RED);
-		lblMsg.setBounds(191, 449, 388, 14);
-		lblMsg.setVisible(true);
-		scrollPane.setRowHeaderView(lblMsg);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				predictMovieInputWindow.setPredictMovieResultWindow(null);
+				dispose();
+			}
+		});
 
 	}
 }

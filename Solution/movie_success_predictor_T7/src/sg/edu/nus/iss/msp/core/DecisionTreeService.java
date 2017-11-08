@@ -3,8 +3,10 @@ package sg.edu.nus.iss.msp.core;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.supervised.instance.*;
 import weka.core.*;
+import weka.classifiers.Evaluation;
 import weka.classifiers.trees.J48;
 import java.io.*;
+import java.util.Random;
 import java.util.logging.*;
 
 import sg.edu.nus.iss.msp.model.Movie;
@@ -21,6 +23,7 @@ public class DecisionTreeService {
 //		//"Star", "Amateur", "Super Star", "Action", "Adventure", "Fantasy", "USA", 237000000, "Success"
 //		DecisionTreeService decisionTree = new DecisionTreeService();
 //		System.out.println(decisionTree.trainTree("data/moviedata.arff").toString());
+//		System.out.println(Double.toString(decisionTree.crossValidation("data/moviedata.arff")));
 //		
 //		Movie m = new Movie();
 //		m.setBudget(237000000.00);
@@ -75,7 +78,43 @@ public class DecisionTreeService {
 		}
 		return filteredInstances;
 	}
+	
+	
+	public Double crossValidation(String fileName) {
+		learntModel = new J48();
 
+		String[] options = new String[2];
+		options[0] = "-C";
+		options[1] = "0.25";
+		try {
+			// Load the data source and learn the model
+			DataSource source = new DataSource(fileName);
+			train = source.getDataSet();
+
+			// Learn the Decision Tree
+			train.setClassIndex(train.numAttributes() - 1);
+			learntModel.setOptions(options);
+			learntModel.buildClassifier(this.resampleDataSet(train));
+
+			// Save the Model in moviedata.model file
+			 Evaluation eval=new Evaluation(train);
+
+             //first supply the classifier
+             //then the training data
+             //number of folds
+             //random seed
+             eval.crossValidateModel(learntModel, train, 10, new Random(1));
+             System.out.println("Percent correct: "+
+                                Double.toString(eval.pctCorrect()));
+
+			return eval.pctCorrect();
+
+		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, e.toString(), e);
+		}
+
+		return (double) 0;
+	}
 	/**
 	 * This is to train the Decision Tree with the filename provided. Once the
 	 * training is done, the model will be saved in "data/moviedata.model"
@@ -154,9 +193,10 @@ public class DecisionTreeService {
 	 * @see Exception
 	 */
 
-	public String predict(Movie m, String fileName) {
+	public Object[] predict(Movie m, String fileName) {
 		learntModel = this.loadExistingModel(fileName);
 		DataSource source;
+		Object[] results = new Object[2];
 		try {
 			source = new DataSource(fileName);
 			Instances trainingData = source.getDataSet();
@@ -186,12 +226,15 @@ public class DecisionTreeService {
 			//testInstance.setValue(trainingData.attribute(8), "Success");
 
 			int result = (int) learntModel.classifyInstance(testInstance);
-			String readableResult = trainingData.attribute(8).value(result);
-			return readableResult;
+			
+			results[0] = trainingData.attribute(8).value(result);
+			results[1]=learntModel.toString();
+			
+			return results;
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
-		return "";
+		return results;
 
 	}
 
