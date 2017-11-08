@@ -18,6 +18,7 @@ import weka.core.pmml.jaxbbindings.Item;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
 
 public class PredictMovieInputWindow extends JFrame {
 
@@ -298,23 +299,25 @@ public class PredictMovieInputWindow extends JFrame {
 					return;
 				}
 
-				String predictionResult = movieService.predictMovieSuccess(newMovie);
+				Object[] predictionResult = movieService.predictMovieSuccess(newMovie);
 
 				String resultMsg = "Unable to predict the movie due to error in data.";
-				if (predictionResult.contains("Success")) {
+				if (predictionResult[0].toString().contains("Success")) {
 					resultMsg = "Good News ! The movie is likely to be SUCCESS !";
-				} else if (predictionResult.contains("Fail")) {
+				} else if (predictionResult[0].toString().contains("Fail")) {
 					resultMsg = "Unfortunately, the movie is likely to FAIL.";
 				}
 
-				JOptionPane.showConfirmDialog(this,  resultMsg,"Prediction Result",
-						JOptionPane.DEFAULT_OPTION);
+				// JOptionPane.showConfirmDialog(this, resultMsg, "Prediction
+				// Result", JOptionPane.DEFAULT_OPTION);
+				DecimalFormat df = new DecimalFormat("#.00");
 
-				// predictMovieResultWindow = new PredictMovieResultWindow(this,
-				// movieService);
+				String outPutMsg = predictionResult[1] + "\r\n\r\n" + resultMsg + "\r\n\r\nAccuracy: "
+						+ df.format(predictionResult[2]) + "%";
+				predictMovieResultWindow = new PredictMovieResultWindow(this, movieService, outPutMsg);
 
-				// predictMovieResultWindow.setVisible(true);
-				// predictMovieResultWindow.setLocation(getLocation());
+				predictMovieResultWindow.setVisible(true);
+				predictMovieResultWindow.setLocation(getLocation());
 			}
 		} else {
 			lblMsg.setText("Invalid input");

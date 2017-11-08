@@ -193,9 +193,10 @@ public class DecisionTreeService {
 	 * @see Exception
 	 */
 
-	public String predict(Movie m, String fileName) {
+	public Object[] predict(Movie m, String fileName) {
 		learntModel = this.loadExistingModel(fileName);
 		DataSource source;
+		Object[] results = new Object[2];
 		try {
 			source = new DataSource(fileName);
 			Instances trainingData = source.getDataSet();
@@ -225,12 +226,15 @@ public class DecisionTreeService {
 			//testInstance.setValue(trainingData.attribute(8), "Success");
 
 			int result = (int) learntModel.classifyInstance(testInstance);
-			String readableResult = trainingData.attribute(8).value(result);
-			return readableResult;
+			
+			results[0] = trainingData.attribute(8).value(result);
+			results[1]=learntModel.toString();
+			
+			return results;
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, e.toString(), e);
 		}
-		return "";
+		return results;
 
 	}
 
